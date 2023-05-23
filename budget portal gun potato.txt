@@ -1,0 +1,461 @@
+-- Services
+local cs = game:GetService("CollectionService")
+local ts = game:GetService("TweenService")
+local de = game:GetService("Debris")
+-- Objs
+local player = game.Players.LocalPlayer
+warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight")
+local mouse = player:GetMouse()
+local portal1 = nil
+local portal2 = nil
+local tpcd = false
+-- Functions
+local function createportal(rootpos,tpos,hitpart,ptype)
+	local params = RaycastParams.new()
+	params.FilterDescendantsInstances = {player.Character,portal1,portal2}
+	params.FilterType = Enum.RaycastFilterType.Blacklist
+	local ray = workspace:Raycast(rootpos,CFrame.new(rootpos,tpos).LookVector*9999999999,params)
+	if ray then
+		local rpos = ray.Position
+		local rnorm = ray.Normal
+		local dist = (rootpos-rpos).Magnitude
+		-- Tween info
+		local info = TweenInfo.new(dist/1070687350,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut)
+		local info2 = TweenInfo.new(0.333,Enum.EasingStyle.Circular,Enum.EasingDirection.Out)
+		local orb = Instance.new("Part")
+		orb.Size = Vector3.new(.7,.7,.7)
+		orb.Position = rootpos
+		orb.Anchored = true
+		orb.Name = "PortalOrb"
+		orb.CanCollide = false
+		orb.Shape = Enum.PartType.Ball
+		de:AddItem(orb,dist/1070687350)
+		if ptype == 1 then
+			orb.BrickColor = BrickColor.new("Bright blue")
+		elseif ptype == 2 then
+			orb.BrickColor = BrickColor.new("Neon orange")
+		end
+		orb.Material = Enum.Material.Neon
+		orb.Parent = workspace
+		local tween = ts:Create(orb,info,{Position=rpos})
+		tween:Play()
+		tween.Completed:Wait()
+		if ptype == 1 then
+			if portal1 == nil then
+				portal1 = Instance.new("Part")
+				portal1.Name = ("Blue1")
+				sp1 = Instance.new("SpecialMesh", portal1)
+				sp1.MeshType = "Sphere"
+				sp1.Scale = Vector3.new(1,1.33,.05)
+				idle1 = Instance.new("Sound", portal1)
+				idle1.SoundId = "rbxassetid://13489880584"
+				idle1.Looped = true
+				idle1.Volume = 0.6
+				open1 = Instance.new("Sound", portal1)
+				open1.SoundId = "rbxassetid://182981587"
+				open1.PlaybackSpeed = 1.02
+				portal1.Size = Vector3.new(.7,.7,.7)
+				portal1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				portal1.Anchored = true
+				portal1.CanCollide = false	
+				portal1.BrickColor = BrickColor.new("Bright blue")
+				portal1.Material = Enum.Material.Neon
+				portal1.Parent = workspace
+				portalin1 = Instance.new("Part", portal1)
+				portalin1.Size = Vector3.new(.5,.5,.5)
+				portalin1.CanCollide = false
+				portalin1.BrickColor = BrickColor.new("Bright blue")
+				portalin1.Material = Enum.Material.Neon
+				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				portalin1.Orientation = Vector3.new(90,0,0)
+				portalin1.Anchored = true 
+				portalmesh1 = Instance.new("SpecialMesh", portalin1)
+				portalmesh1.MeshType = "Sphere"
+				portalmesh1.Scale = Vector3.new(1.1,6,.05)
+				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				if portal2 then
+					portalin1.BrickColor = BrickColor.new("Really black")
+					portalin1.Material = Enum.Material.ForceField
+					portalin2.BrickColor = BrickColor.new("Really black")
+					portalin2.Material = Enum.Material.ForceField
+				else
+					portalin1.BrickColor = BrickColor.new("Bright blue")
+					portalin1.Material = Enum.Material.Neon
+				end
+				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				tween:Play()
+				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				tween:Play()
+				idle1:Play()
+				portal1.Touched:Connect(function(hit)
+					local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+					if hit.Parent == player.Character and portal2 and tpcd == false then
+						tpcd = true
+						Teleport2:Play()
+						player.Character.Humanoid.Sit = true
+						player.Character.HumanoidRootPart.CFrame = portal2.CFrame
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2)
+						wait(0.5)
+						tpcd = false
+					end
+				end)
+			else
+				portalin1:Destroy()
+				portalin1 = Instance.new("Part", portal1)
+				portalin1.Size = Vector3.new(.5,.5,.5)
+				portalin1.BrickColor = BrickColor.new("Bright blue")
+				portalin1.Material = Enum.Material.Neon
+				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				portalin1.Orientation = Vector3.new(90,0,0)
+				portalin1.Anchored = true 
+				portalin1.CanCollide = false
+				portalmesh1 = Instance.new("SpecialMesh", portalin1)
+				portalmesh1.MeshType = "Sphere"
+				portalmesh1.Scale = Vector3.new(1.1,6,.05)
+				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				portal1.Size = Vector3.new(.7,.7,.7)
+				portal1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				if portal2 then
+					portalin1.BrickColor = BrickColor.new("Really black")
+					portalin1.Material = Enum.Material.ForceField
+					portalin2.BrickColor = BrickColor.new("Really black")
+					portalin2.Material = Enum.Material.ForceField
+				else
+					portalin1.BrickColor = BrickColor.new("Bright blue")
+					portalin1.Material = Enum.Material.Neon
+				end
+				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				tween:Play()
+				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				tween:Play()
+			end
+		elseif ptype == 2 then
+			if portal2 == nil then
+				portal2 = Instance.new("Part")
+				portal2.Name = ("Orange2")
+				sp2 = Instance.new("SpecialMesh", portal2)
+				sp2.MeshType = "Sphere"
+				sp2.Scale = Vector3.new(1,1.33,0.05)
+				idle2 = Instance.new("Sound", portal2)
+				idle2.SoundId = "rbxassetid://13489880584"
+				idle2.Looped = true
+				idle2.Volume = 0.6
+				open2 = Instance.new("Sound", portal2)
+				open2.SoundId = "rbxassetid://182981587"
+				portal2.Size = Vector3.new(.7,.7,.7)
+				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				portal2.Anchored = true
+				portal2.CanCollide = false
+				portal2.BrickColor = BrickColor.new("Neon orange")
+				portal2.Material = Enum.Material.Neon
+				portal2.Parent = workspace
+				portalin2 = Instance.new("Part", portal2)
+				portalin2.Size = Vector3.new(.5,.5,.5)
+				portalin2.CanCollide = false
+				portalin2.BrickColor = BrickColor.new("Neon orange")
+				portalin2.Material = Enum.Material.Neon
+				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				portalin2.Orientation = Vector3.new(90,0,0)
+				portalin2.Anchored = true 
+				portalmesh2 = Instance.new("SpecialMesh", portalin2)
+				portalmesh2.MeshType = "Sphere"
+				portalmesh2.Scale = Vector3.new(1.1,6,.05)
+				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				if portal1 then
+					portalin2.BrickColor = BrickColor.new("Really black")
+					portalin2.Material = Enum.Material.ForceField
+					portalin1.BrickColor = BrickColor.new("Really black")
+					portalin1.Material = Enum.Material.ForceField
+				else
+					portalin2.BrickColor = BrickColor.new("Neon orange")
+					portalin2.Material = Enum.Material.Neon
+				end
+				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				tween:Play()
+				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				tween:Play()
+				idle2:Play()
+				portal2.Touched:Connect(function(hit)
+					local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+					if hit.Parent == player.Character and portal1 and tpcd == false then
+						tpcd = true
+						Teleport:Play()
+						player.Character.Humanoid.Sit = true
+						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*
+							wait(0.5)
+						tpcd = false
+					end
+				end)
+			else
+				portalin2:Destroy()
+				portalin2 = Instance.new("Part", portal2)
+				portalin2.Size = Vector3.new(.5,.5,.5)
+				portalin2.CanCollide = false
+				portalin2.BrickColor = BrickColor.new("Neon orange")
+				portalin2.Material = Enum.Material.Neon
+				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				portalin2.Orientation = Vector3.new(90,0,0)
+				portalin2.Anchored = true 
+				portalmesh2 = Instance.new("SpecialMesh", portalin2)
+				portalmesh2.MeshType = "Sphere"
+				portalmesh2.Scale = Vector3.new(1.1,6,.05)
+				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				if portal1 then
+					portalin2.BrickColor = BrickColor.new("Really black")
+					portalin2.Material = Enum.Material.ForceField
+					portalin1.BrickColor = BrickColor.new("Really black")
+					portalin1.Material = Enum.Material.ForceField
+				else
+					portalin2.BrickColor = BrickColor.new("Neon orange")
+					portalin2.Material = Enum.Material.Neon
+				end
+				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				tween:Play()
+				portal2.Size = Vector3.new(.7,.7,.7)
+				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				tween:Play()
+			end
+		end
+	end
+end
+-- Character
+player.CharacterAdded:Connect(function(char)
+	if portal1 then
+		portal1:Destroy()
+		portalin1:Destroy()
+	end
+	if portal2 then
+		portal2:Destroy()
+		portalin2:Destroy()
+	end
+	portal1 = nil
+	portal2 = nil
+	tpcd = false
+	-- Create tool
+	local tool = Instance.new("Tool")
+	local handle = Instance.new("Part")
+	handle.CanCollide = false
+	local mesh = Instance.new("SpecialMesh", handle)
+	mesh.MeshId = "rbxassetid://13389594321"
+	mesh.TextureId = "rbxassetid://13389594366" 
+	local cylinder1  = Instance.new("Part", handle)
+	cylinder1.Shape = "Cylinder" --Blue Cylinder
+	cylinder1.Orientation = Vector3.new(0,90,0)
+	cylinder1.Size = Vector3.new(2.5,.5,.5)
+	cylinder1.Material = Enum.Material.Neon
+	cylinder1.BrickColor = BrickColor.new("Really black") 
+	cylinder1.CanCollide = false
+	local weld1 = Instance.new("WeldConstraint", tool)
+	weld1.Part0 = handle
+	weld1.Part1 = cylinder1 --bluecylinder
+	local handle2 = Instance.new("Part", handle)
+	handle2.CanCollide = false
+	handle2.Orientation = Vector3.new(0,0,180)
+	local mesh = Instance.new("SpecialMesh", handle2)
+	mesh.MeshId = "rbxassetid://434881581"
+	mesh.TextureId = "rbxassetid://434881609"
+	mesh.Scale = Vector3.new(.25,.25,.25)
+	mesh.Offset = Vector3.new(0,-.75,-1.75)
+	local weld = Instance.new("WeldConstraint", tool)
+	weld.Part0 = handle2
+	weld.Part1 = handle
+	local potato = Instance.new("Sound", handle2)
+	potato.SoundId = "rbxassetid://224618488"
+	local mesh = Instance.new("SpecialMesh", handle)
+	mesh.MeshId = "rbxassetid://13389594321"
+	mesh.TextureId = "rbxassetid://13389594366" --Potato 2
+	equip = Instance.new("Sound", handle)
+	equip.SoundId = "rbxassetid://13489868679"
+	handle.Name = "Handle"
+	handle.Color = Color3.fromRGB(255,255,255)
+	handle.Size = Vector3.new(1.1,1.1,2.8)
+	handle.Material = Enum.Material.SmoothPlastic
+	handle.Parent = tool
+	tool.Name = "Budget Portal Gun"
+	tool.GripPos = Vector3.new(0,-0.5,0)
+	tool.Parent = player.Backpack
+	local light = Instance.new("SpotLight", handle)
+	light.Angle = 90
+	light.Brightness = 2
+	light.Range = 60
+	light.Enabled = false
+	local click = Instance.new("Sound", handle)
+	click.SoundId = "rbxassetid://5991592592"
+	mouse.KeyDown:Connect(function(key)
+		if key == "f" then 
+			click:Play()
+			if light.Enabled == false then
+				light.Enabled = true
+			else
+				light.Enabled = false
+			end
+		end
+	end)
+	tool.Equipped:Connect(function(mouse)
+		potato:Play()
+		equip:Play()
+		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10488324096"
+		wait(8)
+		if potato then
+			potato.Volume = 0
+		end
+	end)
+	tool.Unequipped:Connect(function(mouse)
+		game.Players.LocalPlayer:GetMouse().Icon = ""
+	end)
+	-- Activate
+	mouse.Button1Down:Connect(function()
+		if tool.Parent == char then
+			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
+			BShoot:Play()
+			open1:Play()
+			cylinder1.BrickColor = BrickColor.new("Bright blue") 
+		end
+	end)
+	mouse.Button2Down:Connect(function()
+		if tool.Parent == char then
+			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
+			OShoot:Play()
+			open2:Play()
+			cylinder1.BrickColor = BrickColor.new("Neon orange") 
+		end
+	end)
+end)	
+--Sound1.5
+OShoot = Instance.new("Sound", Workspace)
+OShoot.SoundId = "rbxassetid://7229704786"
+--Sound1.75
+BShoot = Instance.new("Sound", Workspace)
+BShoot.SoundId = "rbxassetid://7229703765"
+--Sound2
+Teleport = Instance.new("Sound", Workspace)
+Teleport.SoundId = "rbxassetid://13489875496"
+Teleport.PlaybackSpeed = 0.95
+Teleport.Volume = 0.5
+--Sound3
+Teleport2 = Instance.new("Sound", Workspace)
+Teleport2.SoundId = "rbxassetid://13489876588"
+Teleport2.PlaybackSpeed = 0.95
+Teleport2.Volume = 0.3
+--Soundclose
+soundclose = Instance.new("Sound", Workspace)
+soundclose.SoundId = "rbxassetid://182981587"
+soundclose.Volume = 0.3
+--Reseting Portals
+mouse.KeyDown:Connect(function(key)
+	if key == "r" then 
+		if portal1 then
+			portal1:Destroy()
+			soundclose:Play()
+			portalin1:Destroy()
+		end
+		if portal2 then
+			portal2:Destroy()
+			soundclose:Play()
+			portalin2:Destroy()
+		end
+		portal1 = nil
+		portal2 = nil
+		tpcd = false
+	end
+end)
+--Execute2
+local tool = Instance.new("Tool")
+local handle = Instance.new("Part")
+handle.CanCollide = false
+local mesh = Instance.new("SpecialMesh", handle)
+mesh.MeshId = "rbxassetid://13389594321"
+mesh.TextureId = "rbxassetid://13389594366" 
+local cylinder1  = Instance.new("Part", handle)
+cylinder1.Shape = "Cylinder" --Blue Cylinder
+cylinder1.Orientation = Vector3.new(0,90,0)
+cylinder1.Size = Vector3.new(2.5,.5,.5)
+cylinder1.Material = Enum.Material.Neon
+cylinder1.BrickColor = BrickColor.new("Really black") 
+cylinder1.CanCollide = false
+local weld1 = Instance.new("WeldConstraint", tool)
+weld1.Part0 = handle
+weld1.Part1 = cylinder1 --bluecylinder
+local handle2 = Instance.new("Part", handle)
+handle2.CanCollide = false
+handle2.Orientation = Vector3.new(0,0,180)
+local mesh = Instance.new("SpecialMesh", handle2)
+mesh.MeshId = "rbxassetid://434881581"
+mesh.TextureId = "rbxassetid://434881609"
+mesh.Scale = Vector3.new(.25,.25,.25)
+mesh.Offset = Vector3.new(0,-.75,-1.75)
+local weld = Instance.new("WeldConstraint", tool)
+weld.Part0 = handle2
+weld.Part1 = handle
+local potato = Instance.new("Sound", handle2)
+potato.SoundId = "rbxassetid://224618488"
+local mesh = Instance.new("SpecialMesh", handle)
+mesh.MeshId = "rbxassetid://13389594321"
+mesh.TextureId = "rbxassetid://13389594366" --Potato 2
+handle.Name = "Handle"
+handle.Color = Color3.fromRGB(255,255,255)
+handle.Size = Vector3.new(1.1,1.1,2.8)
+handle.Material = Enum.Material.SmoothPlastic
+handle.Parent = tool
+equip = Instance.new("Sound", handle)
+equip.SoundId = "rbxassetid://13489868679"
+tool.Name = "Budget Portal Gun"
+tool.GripPos = Vector3.new(0,-0.5,0)
+tool.Parent = player.Backpack
+local light = Instance.new("SpotLight", handle)
+light.Angle = 90
+light.Brightness = 2
+light.Range = 60
+light.Enabled = false
+local click = Instance.new("Sound", handle)
+click.SoundId = "rbxassetid://5991592592"
+mouse.KeyDown:Connect(function(key)
+	if key == "f" then 
+		click:Play()
+		if light.Enabled == false then
+			light.Enabled = true
+		else
+			light.Enabled = false
+		end
+	end
+end)
+tool.Equipped:Connect(function(mouse)
+	potato:Play()
+	game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10488324096"
+	equip:Play()
+	wait(8)
+	if potato then
+		potato.Volume = 0
+	end
+end)
+tool.Unequipped:Connect(function(mouse)
+	game.Players.LocalPlayer:GetMouse().Icon = ""
+end)
+-- Activate
+mouse.Button1Down:Connect(function()
+	if tool.parent == player.Character then
+		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
+		BShoot:Play()
+		open1:Play()
+		cylinder1.BrickColor = BrickColor.new("Bright blue") 
+	end
+end)
+mouse.Button2Down:Connect(function()
+	if tool.parent == player.Character then
+		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
+		OShoot:Play()
+		open2:Play()
+		cylinder1.BrickColor = BrickColor.new("Neon orange")
+	end
+end)
+for a,b in pairs(getgc()) do 
+		if typeof(b) == 'function' then 
+			if debug.getinfo(b).name == 'kick' then 
+				hookfunction(debug.getinfo(b).func, function()
+					print'game tried to kick'
+				end)
+			end
+		end 
+end
