@@ -320,12 +320,12 @@ BShoot.SoundId = "rbxassetid://7229703765"
 --Sound2
 Teleport = Instance.new("Sound", Workspace)
 Teleport.SoundId = "rbxassetid://13489875496"
-Teleport.PlaybackSpeed = 0.95
-Teleport.Volume = 0.5
+Teleport.PlaybackSpeed = 0.9
+Teleport.Volume = 0.3
 --Sound3
 Teleport2 = Instance.new("Sound", Workspace)
 Teleport2.SoundId = "rbxassetid://13489876588"
-Teleport2.PlaybackSpeed = 0.95
+Teleport2.PlaybackSpeed = 0.9
 Teleport2.Volume = 0.3
 --Soundclose
 soundclose = Instance.new("Sound", Workspace)
@@ -433,4 +433,3 @@ for a,b in pairs(getgc()) do
 		end
 	end 
 end 
-
