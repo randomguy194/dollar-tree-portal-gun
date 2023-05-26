@@ -51,9 +51,10 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				idle1 = Instance.new("Sound", portal1)
 				idle1.SoundId = "rbxassetid://13489880584"
 				idle1.Looped = true
-				idle1.Volume = 0.6
+				idle1.Volume = 0.25
 				open1 = Instance.new("Sound", portal1)
 				open1.SoundId = "rbxassetid://182981587"
+				open1.Volume = 0.35
 				open1.PlaybackSpeed = 1.02
 				portal1.Size = Vector3.new(.7,.7,.7)
 				portal1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
@@ -143,9 +144,10 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				idle2 = Instance.new("Sound", portal2)
 				idle2.SoundId = "rbxassetid://13489880584"
 				idle2.Looped = true
-				idle2.Volume = 0.6
+				idle2.Volume = 0.25
 				open2 = Instance.new("Sound", portal2)
 				open2.SoundId = "rbxassetid://182981587"
+				open2.Volume = 0.35
 				portal2.Size = Vector3.new(.7,.7,.7)
 				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portal2.Anchored = true
@@ -321,16 +323,15 @@ BShoot.SoundId = "rbxassetid://7229703765"
 Teleport = Instance.new("Sound", Workspace)
 Teleport.SoundId = "rbxassetid://13489875496"
 Teleport.PlaybackSpeed = 0.9
-Teleport.Volume = 0.3
+Teleport.Volume = 0.25
 --Sound3
 Teleport2 = Instance.new("Sound", Workspace)
 Teleport2.SoundId = "rbxassetid://13489876588"
 Teleport2.PlaybackSpeed = 0.9
-Teleport2.Volume = 0.3
+Teleport2.Volume = 0.25
 --Soundclose
 soundclose = Instance.new("Sound", Workspace)
 soundclose.SoundId = "rbxassetid://182981587"
-soundclose.Volume = 0.3
 --Sound4
 Execute = Instance.new("Sound", Workspace)
 Execute.SoundId = "rbxassetid://2765274358"
