@@ -1,3 +1,13 @@
+--this ac bypass barely works lol (only client ac)
+for a,b in pairs(getgc()) do 
+	if typeof(b) == 'function' then 
+		if debug.getinfo(b).name == 'kick' then 
+			hookfunction(debug.getinfo(b).func, function()
+				print'game tried to kick'
+			end)
+		end
+	end 
+end
 -- Services
 local cs = game:GetService("CollectionService")
 local ts = game:GetService("TweenService")
@@ -9,6 +19,7 @@ local mouse = player:GetMouse()
 local portal1 = nil
 local portal2 = nil
 local tpcd = false
+local character = player.Character
 -- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
@@ -54,8 +65,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				idle1.Volume = 0.25
 				open1 = Instance.new("Sound", portal1)
 				open1.SoundId = "rbxassetid://182981587"
-				open1.Volume = 0.35
 				open1.PlaybackSpeed = 1.02
+				open1.Volume = 0.35
 				portal1.Size = Vector3.new(.7,.7,.7)
 				portal1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portal1.Anchored = true
@@ -241,6 +252,7 @@ player.CharacterAdded:Connect(function(char)
 	portal1 = nil
 	portal2 = nil
 	tpcd = false
+	local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	-- Create tool
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
@@ -279,15 +291,17 @@ player.CharacterAdded:Connect(function(char)
 	local click = Instance.new("Sound", handle)
 	click.SoundId = "rbxassetid://5991592592"
 	mouse.KeyDown:Connect(function(key)
-		if key == "f" then 
-			click:Play()
-			if light.Enabled == false then
-				light.Enabled = true
-			else
-				light.Enabled = false
-			end
+	if key == "f" then 
+		if tool.parent == char then
+		click:Play()
+		if light.Enabled == false then
+			light.Enabled = true
+		else
+			light.Enabled = false
 		end
-	end)
+		end
+		end
+end)
 	tool.Equipped:Connect(function(mouse)
 		equip:Play()
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10488324096"
@@ -312,7 +326,47 @@ player.CharacterAdded:Connect(function(char)
 			cylinder1.BrickColor = BrickColor.new("Neon orange") 
 		end
 	end)
-end)
+	char.Humanoid.Died:Connect(function()
+		if tool then	
+			tool:Destroy()
+		end
+		if portal1 then
+			portal1:Destroy()
+			soundclose:Play()
+		end
+		if portal2 then
+			portal2:Destroy()
+			soundclose:Play()
+		end
+		if portalin1 then
+			portalin1:Destroy()
+		end
+		if portalin2 then
+			portalin2:Destroy()
+		end
+	end)
+	--Reseting Portals
+	mouse.KeyDown:Connect(function(key)
+		if key == "r" then 
+			if tool.parent == char then
+				if portal1 then
+					portal1:Destroy()
+					soundclose:Play()
+					portalin1:Destroy()
+				end
+				if portal2 then
+					portal2:Destroy()
+					soundclose:Play()
+					portalin2:Destroy()
+				end
+				portal1 = nil
+				portal2 = nil
+				tpcd = false
+				cylinder1.BrickColor = BrickColor.new("Really black")
+			end
+		end
+	end)
+end)	
 --Sound1.5
 OShoot = Instance.new("Sound", Workspace)
 OShoot.SoundId = "rbxassetid://7229704786"
@@ -332,28 +386,11 @@ Teleport2.Volume = 0.25
 --Soundclose
 soundclose = Instance.new("Sound", Workspace)
 soundclose.SoundId = "rbxassetid://182981587"
+soundclose.Volume = 0.25
 --Sound4
 Execute = Instance.new("Sound", Workspace)
 Execute.SoundId = "rbxassetid://2765274358"
 Execute:Play()
---Reseting Portals
-mouse.KeyDown:Connect(function(key)
-	if key == "r" then 
-		if portal1 then
-			portal1:Destroy()
-			soundclose:Play()
-			portalin1:Destroy()
-		end
-		if portal2 then
-			portal2:Destroy()
-			soundclose:Play()
-			portalin2:Destroy()
-		end
-		portal1 = nil
-		portal2 = nil
-		tpcd = false
-	end
-end)
 --Execute2
 local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
@@ -374,13 +411,13 @@ weld1.Part1 = cylinder1 --bluecylinder
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://13389594321"
 mesh.TextureId = "rbxassetid://13389594366" --Potato 2
+equip = Instance.new("Sound", handle)
+equip.SoundId = "rbxassetid://13489868679"
 handle.Name = "Handle"
 handle.Color = Color3.fromRGB(255,255,255)
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
-equip = Instance.new("Sound", handle)
-equip.SoundId = "rbxassetid://13489868679"
 tool.Name = "Budget Portal Gun"
 tool.GripPos = Vector3.new(0,-0.5,0)
 tool.Parent = player.Backpack
@@ -393,11 +430,13 @@ local click = Instance.new("Sound", handle)
 click.SoundId = "rbxassetid://5991592592"
 mouse.KeyDown:Connect(function(key)
 	if key == "f" then 
-		click:Play()
-		if light.Enabled == false then
-			light.Enabled = true
-		else
-			light.Enabled = false
+		if tool.parent == player.Character then
+			click:Play()
+			if light.Enabled == false then
+				light.Enabled = true
+			else
+				light.Enabled = false
+			end
 		end
 	end
 end)
@@ -425,12 +464,44 @@ mouse.Button2Down:Connect(function()
 		cylinder1.BrickColor = BrickColor.new("Neon orange")
 	end
 end)
-for a,b in pairs(getgc()) do 
-	if typeof(b) == 'function' then 
-		if debug.getinfo(b).name == 'kick' then 
-			hookfunction(debug.getinfo(b).func, function()
-				print'game tried to kick'
-			end)
+--if you died then the portals are gone lol
+character.Humanoid.Died:Connect(function()
+	if tool then	
+		tool:Destroy()
+	end
+	if portal1 then
+		portal1:Destroy()
+		soundclose:Play()
+	end
+	if portal2 then
+		portal2:Destroy()
+		soundclose:Play()
+	end
+	if portalin1 then
+		portalin1:Destroy()
+	end
+	if portalin2 then
+		portalin2:Destroy()
+	end
+end)
+--Reseting Portals
+mouse.KeyDown:Connect(function(key)
+	if key == "r" then 
+		if tool.parent == player.Character then
+			if portal1 then
+				portal1:Destroy()
+				soundclose:Play()
+				portalin1:Destroy()
+			end
+			if portal2 then
+				portal2:Destroy()
+				soundclose:Play()
+				portalin2:Destroy()
+			end
+			portal1 = nil
+			portal2 = nil
+			tpcd = false
+			cylinder1.BrickColor = BrickColor.new("Really black")
 		end
-	end 
-end 
+	end
+end)
