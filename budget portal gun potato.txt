@@ -257,6 +257,7 @@ player.CharacterAdded:Connect(function(char)
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
 	handle.CanCollide = false
+	tool.TextureId = "rbxassetid://13584132083"
 	tool.CanBeDropped = false
 	local mesh = Instance.new("SpecialMesh", handle)
 	mesh.MeshId = "rbxassetid://13389594321"
@@ -304,18 +305,18 @@ player.CharacterAdded:Connect(function(char)
 	light.Enabled = false
 	local click = Instance.new("Sound", handle)
 	click.SoundId = "rbxassetid://5991592592"
-    mouse.KeyDown:Connect(function(key)
-	if key == "f" then 
-		if tool.parent == char then
-		click:Play()
-		if light.Enabled == false then
-			light.Enabled = true
-		else
-			light.Enabled = false
+	mouse.KeyDown:Connect(function(key)
+		if key == "f" then 
+			if tool.parent == char then
+				click:Play()
+				if light.Enabled == false then
+					light.Enabled = true
+				else
+					light.Enabled = false
+				end
+			end
 		end
-		end
-		end
-end)	
+	end)	
 	tool.Equipped:Connect(function(mouse)
 		potato:Play()
 		equip:Play()
@@ -410,6 +411,7 @@ soundclose.Volume = 0.25
 local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
 handle.CanCollide = false
+tool.TextureId = "rbxassetid://13584132083"
 tool.CanBeDropped = false
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://13389594321"
@@ -460,14 +462,14 @@ click.SoundId = "rbxassetid://5991592592"
 mouse.KeyDown:Connect(function(key)
 	if key == "f" then 
 		if tool.parent == player.Character then
-		click:Play()
-		if light.Enabled == false then
-			light.Enabled = true
-		else
-			light.Enabled = false
+			click:Play()
+			if light.Enabled == false then
+				light.Enabled = true
+			else
+				light.Enabled = false
+			end
 		end
-		end
-		end
+	end
 end)
 tool.Equipped:Connect(function(mouse)
 	potato:Play()
@@ -538,4 +540,4 @@ mouse.KeyDown:Connect(function(key)
 			cylinder1.BrickColor = BrickColor.new("Really black")
 		end
 	end
-	end)
+end)
