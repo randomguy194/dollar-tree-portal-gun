@@ -257,6 +257,7 @@ player.CharacterAdded:Connect(function(char)
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
 	handle.CanCollide = false
+	tool.TextureId = "rbxassetid://13584125917"
 	tool.CanBeDropped = false
 	local mesh = Instance.new("SpecialMesh", handle)
 	mesh.MeshId = "rbxassetid://13389594321"
@@ -292,17 +293,17 @@ player.CharacterAdded:Connect(function(char)
 	local click = Instance.new("Sound", handle)
 	click.SoundId = "rbxassetid://5991592592"
 	mouse.KeyDown:Connect(function(key)
-	if key == "f" then 
-		if tool.parent == char then
-		click:Play()
-		if light.Enabled == false then
-			light.Enabled = true
-		else
-			light.Enabled = false
+		if key == "f" then 
+			if tool.parent == char then
+				click:Play()
+				if light.Enabled == false then
+					light.Enabled = true
+				else
+					light.Enabled = false
+				end
+			end
 		end
-		end
-		end
-end)
+	end)
 	tool.Equipped:Connect(function(mouse)
 		equip:Play()
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10488324096"
@@ -396,6 +397,7 @@ Execute:Play()
 local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
 handle.CanCollide = false
+tool.TextureId = "rbxassetid://13584125917"
 tool.CanBeDropped = false
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://13389594321"
