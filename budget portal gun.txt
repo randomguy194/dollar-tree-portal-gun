@@ -257,6 +257,7 @@ player.CharacterAdded:Connect(function(char)
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
 	handle.CanCollide = false
+	tool.CanBeDropped = false
 	local mesh = Instance.new("SpecialMesh", handle)
 	mesh.MeshId = "rbxassetid://13389594321"
 	mesh.TextureId = "rbxassetid://13389594366" 
@@ -395,6 +396,7 @@ Execute:Play()
 local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
 handle.CanCollide = false
+tool.CanBeDropped = false
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://13389594321"
 mesh.TextureId = "rbxassetid://13389594366" 
