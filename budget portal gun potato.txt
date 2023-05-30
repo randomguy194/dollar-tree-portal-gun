@@ -200,7 +200,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						Teleport:Play()
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*2)
 							wait(0.5)
 						tpcd = false
 					end
