@@ -96,9 +96,9 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					portalin1.BrickColor = BrickColor.new("Bright blue")
 					portalin1.Material = Enum.Material.Neon
 				end
-				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
 				tween:Play()
-				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 				idle1:Play()
 				portal1.Touched:Connect(function(hit)
@@ -109,7 +109,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal2.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2)
-						wait(0.5)
+						wait(0.3)
 						tpcd = false
 					end
 				end)
@@ -139,9 +139,9 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					portalin1.BrickColor = BrickColor.new("Bright blue")
 					portalin1.Material = Enum.Material.Neon
 				end
-				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
-				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
 				tween:Play()
 			end
 		elseif ptype == 2 then
@@ -188,9 +188,9 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					portalin2.BrickColor = BrickColor.new("Neon orange")
 					portalin2.Material = Enum.Material.Neon
 				end
-				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
 				tween:Play()
-				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 				idle2:Play()
 				portal2.Touched:Connect(function(hit)
@@ -201,7 +201,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*
-							wait(0.5)
+							wait(0.3)
 						tpcd = false
 					end
 				end)
@@ -229,11 +229,11 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					portalin2.BrickColor = BrickColor.new("Neon orange")
 					portalin2.Material = Enum.Material.Neon
 				end
-				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4,1.2,2.5),Transparency=0})
+				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
 				tween:Play()
 				portal2.Size = Vector3.new(.7,.7,.7)
 				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
-				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,.05),Transparency=0})
+				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 			end
 		end
