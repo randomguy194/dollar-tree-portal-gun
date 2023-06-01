@@ -14,6 +14,7 @@ local ts = game:GetService("TweenService")
 local de = game:GetService("Debris")
 -- Objs
 local player = game.Players.LocalPlayer
+warn("'Speedy thing goes in, speedy thing comes out.'")
 warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight")
 local mouse = player:GetMouse()
 local portal1 = nil
@@ -62,11 +63,12 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				idle1 = Instance.new("Sound", portal1)
 				idle1.SoundId = "rbxassetid://13489880584"
 				idle1.Looped = true
-				idle1.Volume = 0.25
+				idle1.Volume = 0.2
 				open1 = Instance.new("Sound", portal1)
 				open1.SoundId = "rbxassetid://182981587"
 				open1.PlaybackSpeed = 1.02
 				open1.Volume = 0.35
+				open1.PlayOnRemove = true 
 				portal1.Size = Vector3.new(.7,.7,.7)
 				portal1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portal1.Anchored = true
@@ -109,11 +111,17 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal2.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2)
-						wait(0.3)
+						wait(0.5)
 						tpcd = false
 					end
 				end)
 			else
+				open1:Destroy()
+				open1 = Instance.new("Sound", portal1)
+				open1.SoundId = "rbxassetid://182981587"
+				open1.PlaybackSpeed = 1.02
+				open1.Volume = 0.35
+				open1.PlayOnRemove = true 
 				portalin1:Destroy()
 				portalin1 = Instance.new("Part", portal1)
 				portalin1.Size = Vector3.new(.5,.5,.5)
@@ -155,10 +163,11 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				idle2 = Instance.new("Sound", portal2)
 				idle2.SoundId = "rbxassetid://13489880584"
 				idle2.Looped = true
-				idle2.Volume = 0.25
+				idle2.Volume = 0.2
 				open2 = Instance.new("Sound", portal2)
 				open2.SoundId = "rbxassetid://182981587"
 				open2.Volume = 0.35
+				open2.PlayOnRemove = true 
 				portal2.Size = Vector3.new(.7,.7,.7)
 				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portal2.Anchored = true
@@ -201,11 +210,18 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*2)
-							wait(0.3)
+						wait(0.5)
 						tpcd = false
 					end
 				end)
 			else
+				open2:Destroy()
+				open2 = Instance.new("Sound", portal2)
+				open2.SoundId = "rbxassetid://182981587"
+				open2.Volume = 0.35
+				open2.PlayOnRemove = true 
+				portal2.Size = Vector3.new(.7,.7,.7)
+				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portalin2:Destroy()
 				portalin2 = Instance.new("Part", portal2)
 				portalin2.Size = Vector3.new(.5,.5,.5)
@@ -231,8 +247,6 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				end
 				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
 				tween:Play()
-				portal2.Size = Vector3.new(.7,.7,.7)
-				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 			end
@@ -303,7 +317,7 @@ player.CharacterAdded:Connect(function(char)
 				end
 			end
 		end
-	end)
+	end)	
 	tool.Equipped:Connect(function(mouse)
 		equip:Play()
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10488324096"
@@ -314,17 +328,15 @@ player.CharacterAdded:Connect(function(char)
 	-- Activate
 	mouse.Button1Down:Connect(function()
 		if tool.Parent == char then
-			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 			BShoot:Play()
-			open1:Play()
+			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 			cylinder1.BrickColor = BrickColor.new("Bright blue") 
 		end
 	end)
 	mouse.Button2Down:Connect(function()
 		if tool.Parent == char then
-			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 			OShoot:Play()
-			open2:Play()
+			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 			cylinder1.BrickColor = BrickColor.new("Neon orange") 
 		end
 	end)
@@ -378,13 +390,13 @@ BShoot.SoundId = "rbxassetid://7229703765"
 --Sound2
 Teleport = Instance.new("Sound", Workspace)
 Teleport.SoundId = "rbxassetid://13489875496"
-Teleport.PlaybackSpeed = 0.9
-Teleport.Volume = 0.25
+Teleport.PlaybackSpeed = 0.88
+Teleport.Volume = 0.2
 --Sound3
 Teleport2 = Instance.new("Sound", Workspace)
 Teleport2.SoundId = "rbxassetid://13489876588"
-Teleport2.PlaybackSpeed = 0.9
-Teleport2.Volume = 0.25
+Teleport2.PlaybackSpeed = 0.88
+Teleport2.Volume = 0.2
 --Soundclose
 soundclose = Instance.new("Sound", Workspace)
 soundclose.SoundId = "rbxassetid://182981587"
@@ -415,13 +427,13 @@ weld1.Part1 = cylinder1 --bluecylinder
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://13389594321"
 mesh.TextureId = "rbxassetid://13389594366" --Potato 2
-equip = Instance.new("Sound", handle)
-equip.SoundId = "rbxassetid://13489868679"
 handle.Name = "Handle"
 handle.Color = Color3.fromRGB(255,255,255)
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
+equip = Instance.new("Sound", handle)
+equip.SoundId = "rbxassetid://13489868679"
 tool.Name = "Budget Portal Gun"
 tool.GripPos = Vector3.new(0,-0.5,0)
 tool.Parent = player.Backpack
@@ -454,17 +466,15 @@ end)
 -- Activate
 mouse.Button1Down:Connect(function()
 	if tool.parent == player.Character then
-		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 		BShoot:Play()
-		open1:Play()
+		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 		cylinder1.BrickColor = BrickColor.new("Bright blue") 
 	end
 end)
 mouse.Button2Down:Connect(function()
 	if tool.parent == player.Character then
-		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 		OShoot:Play()
-		open2:Play()
+		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 		cylinder1.BrickColor = BrickColor.new("Neon orange")
 	end
 end)
