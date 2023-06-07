@@ -275,7 +275,7 @@ player.CharacterAdded:Connect(function(char)
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
 	handle.CanCollide = false
-	tool.TextureId = "rbxassetid://13584132083"
+	tool.TextureId = "rbxassetid://13584125917"
 	tool.CanBeDropped = false
 	local mesh = Instance.new("SpecialMesh", handle)
 	mesh.MeshId = "rbxassetid://13389594321"
@@ -290,19 +290,6 @@ player.CharacterAdded:Connect(function(char)
 	local weld1 = Instance.new("WeldConstraint", tool)
 	weld1.Part0 = handle
 	weld1.Part1 = cylinder1 --bluecylinder
-	local handle2 = Instance.new("Part", handle)
-	handle2.CanCollide = false
-	handle2.Orientation = Vector3.new(0,0,180)
-	local mesh = Instance.new("SpecialMesh", handle2)
-	mesh.MeshId = "rbxassetid://434881581"
-	mesh.TextureId = "rbxassetid://434881609"
-	mesh.Scale = Vector3.new(.25,.25,.25)
-	mesh.Offset = Vector3.new(0,-.75,-1.75)
-	local weld = Instance.new("WeldConstraint", tool)
-	weld.Part0 = handle2
-	weld.Part1 = handle
-	local potato = Instance.new("Sound", handle2)
-	potato.SoundId = "rbxassetid://224618488"
 	local mesh = Instance.new("SpecialMesh", handle)
 	mesh.MeshId = "rbxassetid://13389594321"
 	mesh.TextureId = "rbxassetid://13389594366" --Potato 2
@@ -336,7 +323,6 @@ player.CharacterAdded:Connect(function(char)
 		end
 	end)	
 	tool.Equipped:Connect(function(mouse)
-		potato:Play()
 		equip:Play()
 		if portal1 then
 			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
@@ -349,10 +335,6 @@ player.CharacterAdded:Connect(function(char)
 		end 
 		if portal1 == nil and portal2 == nil then 
 			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
-		end
-		wait(8)
-		if potato then
-			potato.Volume = 0
 		end
 	end)
 	tool.Unequipped:Connect(function(mouse)
@@ -437,11 +419,15 @@ Teleport2.Volume = 0.2
 soundclose = Instance.new("Sound", Workspace)
 soundclose.SoundId = "rbxassetid://182981587"
 soundclose.Volume = 0.25
+--Sound4
+Execute = Instance.new("Sound", Workspace)
+Execute.SoundId = "rbxassetid://2765274358"
+Execute:Play()
 --Execute2
 local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
 handle.CanCollide = false
-tool.TextureId = "rbxassetid://13584132083"
+tool.TextureId = "rbxassetid://13584125917"
 tool.CanBeDropped = false
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://13389594321"
@@ -456,19 +442,6 @@ cylinder1.CanCollide = false
 local weld1 = Instance.new("WeldConstraint", tool)
 weld1.Part0 = handle
 weld1.Part1 = cylinder1 --bluecylinder
-local handle2 = Instance.new("Part", handle)
-handle2.CanCollide = false
-handle2.Orientation = Vector3.new(0,0,180)
-local mesh = Instance.new("SpecialMesh", handle2)
-mesh.MeshId = "rbxassetid://434881581"
-mesh.TextureId = "rbxassetid://434881609"
-mesh.Scale = Vector3.new(.25,.25,.25)
-mesh.Offset = Vector3.new(0,-.75,-1.75)
-local weld = Instance.new("WeldConstraint", tool)
-weld.Part0 = handle2
-weld.Part1 = handle
-local potato = Instance.new("Sound", handle2)
-potato.SoundId = "rbxassetid://224618488"
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://13389594321"
 mesh.TextureId = "rbxassetid://13389594366" --Potato 2
@@ -502,7 +475,6 @@ mouse.KeyDown:Connect(function(key)
 	end
 end)
 tool.Equipped:Connect(function(mouse)
-	potato:Play()
 	if portal1 then
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 	end 
@@ -516,10 +488,6 @@ tool.Equipped:Connect(function(mouse)
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
 	end
 	equip:Play()
-	wait(8)
-	if potato then
-		potato.Volume = 0
-	end
 end)
 tool.Unequipped:Connect(function(mouse)
 	game.Players.LocalPlayer:GetMouse().Icon = ""
