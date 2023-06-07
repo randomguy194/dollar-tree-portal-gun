@@ -94,9 +94,11 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					portalin1.Material = Enum.Material.ForceField
 					portalin2.BrickColor = BrickColor.new("Really black")
 					portalin2.Material = Enum.Material.ForceField
+					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683216197"
 				else
 					portalin1.BrickColor = BrickColor.new("Bright blue")
 					portalin1.Material = Enum.Material.Neon
+					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 				end
 				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
 				tween:Play()
@@ -193,9 +195,11 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					portalin2.Material = Enum.Material.ForceField
 					portalin1.BrickColor = BrickColor.new("Really black")
 					portalin1.Material = Enum.Material.ForceField
+					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683216197"
 				else
 					portalin2.BrickColor = BrickColor.new("Neon orange")
 					portalin2.Material = Enum.Material.Neon
+					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683371140"
 				end
 				local tween = ts:Create(portalin2,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
 				tween:Play()
@@ -320,7 +324,18 @@ player.CharacterAdded:Connect(function(char)
 	end)	
 	tool.Equipped:Connect(function(mouse)
 		equip:Play()
-		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10488324096"
+		if portal1 then
+			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
+		end 
+		if portal2 then
+			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683371140"
+		end 
+		if portal1 and portal2 then 
+			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683216197"
+		end 
+		if portal1 == nil and portal2 == nil then 
+			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
+		end
 	end)
 	tool.Unequipped:Connect(function(mouse)
 		game.Players.LocalPlayer:GetMouse().Icon = ""
@@ -377,6 +392,9 @@ player.CharacterAdded:Connect(function(char)
 				portal2 = nil
 				tpcd = false
 				cylinder1.BrickColor = BrickColor.new("Really black")
+				if portal1 == nil and portal2 == nil then 
+					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
+				end
 			end
 		end
 	end)
@@ -457,7 +475,18 @@ mouse.KeyDown:Connect(function(key)
 	end
 end)
 tool.Equipped:Connect(function(mouse)
-	game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://10488324096"
+	if portal1 then
+		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
+	end 
+	if portal2 then
+		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683371140"
+	end 
+	if portal1 and portal2 then 
+		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683216197"
+	end 
+	if portal1 == nil and portal2 == nil then 
+		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
+	end
 	equip:Play()
 end)
 tool.Unequipped:Connect(function(mouse)
@@ -516,6 +545,9 @@ mouse.KeyDown:Connect(function(key)
 			portal2 = nil
 			tpcd = false
 			cylinder1.BrickColor = BrickColor.new("Really black")
+			if portal1 == nil and portal2 == nil then 
+				game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
+			end
 		end
 	end
 end)
