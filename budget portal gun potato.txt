@@ -1,4 +1,4 @@
--- Services
+-- Services (budget portal gun potato)
 local cs = game:GetService("CollectionService")
 local ts = game:GetService("TweenService")
 local de = game:GetService("Debris")
@@ -59,6 +59,11 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				open1.PlaybackSpeed = 1.02
 				open1.Volume = 0.35
 				open1.PlayOnRemove = true 
+				soundopen1 = Instance.new("Sound", portal1)
+				soundopen1.SoundId = "rbxassetid://13753081578"
+				soundopen1.RollOffMinDistance = 30
+				soundopen1.Volume = 0.6
+				soundopen1:Play()
 				portal1.Size = Vector3.new(.7,.7,.7)
 				portal1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portal1.Anchored = true
@@ -114,6 +119,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				open1.PlaybackSpeed = 1.02
 				open1.Volume = 0.35
 				open1.PlayOnRemove = true 
+				soundopen1:Play()
 				portalin1:Destroy()
 				portalin1 = Instance.new("Part", portal1)
 				portalin1.Size = Vector3.new(.5,.5,.5)
@@ -160,6 +166,11 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				open2.SoundId = "rbxassetid://182981587"
 				open2.Volume = 0.35
 				open2.PlayOnRemove = true 
+				soundopen2 = Instance.new("Sound", portal2)
+				soundopen2.SoundId = "rbxassetid://13753082481"
+				soundopen2.RollOffMinDistance = 30
+				soundopen2.Volume = 0.6
+				soundopen2:Play()
 				portal2.Size = Vector3.new(.7,.7,.7)
 				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portal2.Anchored = true
@@ -214,6 +225,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				open2.SoundId = "rbxassetid://182981587"
 				open2.Volume = 0.35
 				open2.PlayOnRemove = true 
+				soundopen2:Play()
 				portal2.Size = Vector3.new(.7,.7,.7)
 				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				portalin2:Destroy()
@@ -293,11 +305,14 @@ player.CharacterAdded:Connect(function(char)
 	weld.Part1 = handle
 	local potato = Instance.new("Sound", handle2)
 	potato.SoundId = "rbxassetid://224618488"
-	local mesh = Instance.new("SpecialMesh", handle)
-	mesh.MeshId = "rbxassetid://13389594321"
-	mesh.TextureId = "rbxassetid://13389594366" --Potato 2
-	equip = Instance.new("Sound", handle)
+	equip = Instance.new("Sound", handle) -- sounds
 	equip.SoundId = "rbxassetid://13489868679"
+	soundclose = Instance.new("Sound", handle)
+	soundclose.SoundId = "rbxassetid://13489877278"
+	BShoot = Instance.new("Sound", handle)
+	BShoot.SoundId = "rbxassetid://13753077478"
+	OShoot = Instance.new("Sound", handle)
+	OShoot.SoundId = "rbxassetid://13753078644"
 	handle.Name = "Handle"
 	handle.Color = Color3.fromRGB(255,255,255)
 	handle.Size = Vector3.new(1.1,1.1,2.8)
@@ -326,8 +341,8 @@ player.CharacterAdded:Connect(function(char)
 		end
 	end)	
 	tool.Equipped:Connect(function(mouse)
-		potato:Play()
 		equip:Play()
+		potato:Play()
 		if portal1 then
 			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 		end 
@@ -353,14 +368,14 @@ player.CharacterAdded:Connect(function(char)
 		if tool.Parent == char then
 			BShoot:Play()
 			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
-			cylinder1.BrickColor = BrickColor.new("Bright blue") 
+			cylinder1.BrickColor = BrickColor.new("Bright blue")
 		end
 	end)
 	mouse.Button2Down:Connect(function()
 		if tool.Parent == char then
 			OShoot:Play()
 			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
-			cylinder1.BrickColor = BrickColor.new("Neon orange") 
+			cylinder1.BrickColor = BrickColor.new("Neon orange")
 		end
 	end)
 	char.Humanoid.Died:Connect(function()
@@ -369,11 +384,9 @@ player.CharacterAdded:Connect(function(char)
 		end
 		if portal1 then
 			portal1:Destroy()
-			soundclose:Play()
 		end
 		if portal2 then
 			portal2:Destroy()
-			soundclose:Play()
 		end
 		if portalin1 then
 			portalin1:Destroy()
@@ -388,13 +401,13 @@ player.CharacterAdded:Connect(function(char)
 			if tool.parent == char then
 				if portal1 then
 					portal1:Destroy()
-					soundclose:Play()
 					portalin1:Destroy()
+					soundclose:Play()
 				end
 				if portal2 then
 					portal2:Destroy()
-					soundclose:Play()
 					portalin2:Destroy()
+					soundclose:Play()
 				end
 				portal1 = nil
 				portal2 = nil
@@ -407,27 +420,17 @@ player.CharacterAdded:Connect(function(char)
 		end
 	end)
 end)	
---Sound1.5
-OShoot = Instance.new("Sound", Workspace)
-OShoot.SoundId = "rbxassetid://7229704786"
---Sound1.75
-BShoot = Instance.new("Sound", Workspace)
-BShoot.SoundId = "rbxassetid://7229703765"
---Sound2
+--Teleport1Sound
 Teleport = Instance.new("Sound", Workspace)
 Teleport.SoundId = "rbxassetid://13489875496"
 Teleport.PlaybackSpeed = 0.88
 Teleport.Volume = 0.2
---Sound3
+--Teleport2Sound
 Teleport2 = Instance.new("Sound", Workspace)
 Teleport2.SoundId = "rbxassetid://13489876588"
 Teleport2.PlaybackSpeed = 0.88
 Teleport2.Volume = 0.2
---Soundclose
-soundclose = Instance.new("Sound", Workspace)
-soundclose.SoundId = "rbxassetid://182981587"
-soundclose.Volume = 0.25
---Execute2
+--GiveToolOnExecution
 local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
 handle.CanCollide = false
@@ -459,16 +462,19 @@ weld.Part0 = handle2
 weld.Part1 = handle
 local potato = Instance.new("Sound", handle2)
 potato.SoundId = "rbxassetid://224618488"
-local mesh = Instance.new("SpecialMesh", handle)
-mesh.MeshId = "rbxassetid://13389594321"
-mesh.TextureId = "rbxassetid://13389594366" --Potato 2
+equip = Instance.new("Sound", handle) -- sounds
+equip.SoundId = "rbxassetid://13489868679"
+soundclose = Instance.new("Sound", handle)
+soundclose.SoundId = "rbxassetid://13489877278"
+BShoot = Instance.new("Sound", handle)
+BShoot.SoundId = "rbxassetid://13753077478"
+OShoot = Instance.new("Sound", handle)
+OShoot.SoundId = "rbxassetid://13753078644"
 handle.Name = "Handle"
 handle.Color = Color3.fromRGB(255,255,255)
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
-equip = Instance.new("Sound", handle)
-equip.SoundId = "rbxassetid://13489868679"
 tool.Name = "Budget Portal Gun"
 tool.GripPos = Vector3.new(0,-0.5,0)
 tool.Parent = player.Backpack
@@ -492,7 +498,6 @@ mouse.KeyDown:Connect(function(key)
 	end
 end)
 tool.Equipped:Connect(function(mouse)
-	potato:Play()
 	if portal1 then
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 	end 
@@ -506,6 +511,7 @@ tool.Equipped:Connect(function(mouse)
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
 	end
 	equip:Play()
+	potato:Play()
 	wait(8)
 	if potato then
 		potato.Volume = 0
@@ -526,7 +532,7 @@ mouse.Button2Down:Connect(function()
 	if tool.parent == player.Character then
 		OShoot:Play()
 		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
-		cylinder1.BrickColor = BrickColor.new("Neon orange")
+		cylinder1.BrickColor = BrickColor.new("Neon orange") 
 	end
 end)
 --if you died then the portals are gone lol
@@ -536,11 +542,9 @@ character.Humanoid.Died:Connect(function()
 	end
 	if portal1 then
 		portal1:Destroy()
-		soundclose:Play()
 	end
 	if portal2 then
 		portal2:Destroy()
-		soundclose:Play()
 	end
 	if portalin1 then
 		portalin1:Destroy()
@@ -554,14 +558,14 @@ mouse.KeyDown:Connect(function(key)
 	if key == "r" then 
 		if tool.parent == player.Character then
 			if portal1 then
-				portal1:Destroy()
-				soundclose:Play()
+				portal1:Destroy()	
 				portalin1:Destroy()
+				soundclose:Play()
 			end
 			if portal2 then
 				portal2:Destroy()
-				soundclose:Play()
 				portalin2:Destroy()
+				soundclose:Play()
 			end
 			portal1 = nil
 			portal2 = nil
