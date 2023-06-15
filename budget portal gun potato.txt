@@ -4,6 +4,8 @@ local ts = game:GetService("TweenService")
 local de = game:GetService("Debris")
 -- Objs
 local player = game.Players.LocalPlayer
+print("GLaDOS: Oh Hi. You're an exploiter huh? Well I'm a POTATO. I am communicating via the ROBLOX console.")
+print("GLaDOS: Oh by the way, I am not liable if you get banned from ROBLOX games with this portal device.")
 warn("'Speedy thing goes in, speedy thing comes out.'")
 warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight")
 local mouse = player:GetMouse()
