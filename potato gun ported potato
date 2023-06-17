@@ -12,6 +12,7 @@ local mouse = player:GetMouse()
 local portal1 = nil
 local portal2 = nil
 local tpcd = false
+local toolequipped = false
 local character = player.Character
 -- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
@@ -274,6 +275,7 @@ player.CharacterAdded:Connect(function(char)
 	portal1 = nil
 	portal2 = nil
 	tpcd = false
+	toolequipped = false 
 	local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	-- Create tool
 	local tool = Instance.new("Tool")
@@ -344,7 +346,7 @@ player.CharacterAdded:Connect(function(char)
 	click.SoundId = "rbxassetid://5991592592"
 	mouse.KeyDown:Connect(function(key)
 		if key == "f" then 
-			if tool.parent == char then
+			if tool.parent == char and toolequipped == true then
 				click:Play()
 				if light.Enabled == false then
 					light.Enabled = true
@@ -356,6 +358,7 @@ player.CharacterAdded:Connect(function(char)
 	end)	
 	tool.Equipped:Connect(function(mouse)
 		equip:Play()
+		toolequipped = true
 		potatosound:Play()
 		if portal1 then
 			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
@@ -376,10 +379,11 @@ player.CharacterAdded:Connect(function(char)
 	end)
 	tool.Unequipped:Connect(function(mouse)
 		game.Players.LocalPlayer:GetMouse().Icon = ""
+		toolequipped = false
 	end)
 	-- Activate
 	mouse.Button1Down:Connect(function()
-		if tool.Parent == char then
+		if tool.Parent == char and toolequipped == true then
 			BShoot:Play()
 			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 			cylinder1.BrickColor = BrickColor.new("Bright blue")
@@ -387,7 +391,7 @@ player.CharacterAdded:Connect(function(char)
 		end
 	end)
 	mouse.Button2Down:Connect(function()
-		if tool.Parent == char then
+		if tool.Parent == char and toolequipped == true then
 			OShoot:Play()
 			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 			cylinder1.BrickColor = BrickColor.new("Neon orange")
@@ -414,7 +418,7 @@ player.CharacterAdded:Connect(function(char)
 	--Reseting Portals
 	mouse.KeyDown:Connect(function(key)
 		if key == "r" then 
-			if tool.parent == char then
+			if tool.parent == char and toolequipped == true then
 				if portal1 then
 					portal1:Destroy()
 					portalin1:Destroy()
@@ -516,7 +520,7 @@ local click = Instance.new("Sound", handle)
 click.SoundId = "rbxassetid://5991592592"	
 mouse.KeyDown:Connect(function(key)
 	if key == "f" then 
-		if tool.parent == player.Character then
+		if tool.parent == player.Character and toolequipped == true then
 			click:Play()
 			if light.Enabled == false then
 				light.Enabled = true
@@ -541,6 +545,7 @@ tool.Equipped:Connect(function(mouse)
 	end
 	equip:Play()
 	potatosound:Play()
+	toolequipped = true 
 	wait(8)
 	if potatosound then
 		potatosound.Volume = 0
@@ -548,10 +553,11 @@ tool.Equipped:Connect(function(mouse)
 end)
 tool.Unequipped:Connect(function(mouse)
 	game.Players.LocalPlayer:GetMouse().Icon = ""
+	toolequipped = false 
 end)
 -- Activate
 mouse.Button1Down:Connect(function()
-	if tool.parent == player.Character then
+	if tool.parent == player.Character and toolequipped == true then
 		BShoot:Play()
 		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 		cylinder1.BrickColor = BrickColor.new("Bright blue") 
@@ -559,7 +565,7 @@ mouse.Button1Down:Connect(function()
 	end
 end)
 mouse.Button2Down:Connect(function()
-	if tool.parent == player.Character then
+	if tool.parent == player.Character and toolequipped == true then
 		OShoot:Play()
 		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 		cylinder1.BrickColor = BrickColor.new("Neon orange")
@@ -587,7 +593,7 @@ end)
 --Reseting Portals
 mouse.KeyDown:Connect(function(key)
 	if key == "r" then 
-		if tool.parent == player.Character then
+		if tool.parent == player.Character and toolequipped == true then
 			if portal1 then
 				portal1:Destroy()	
 				portalin1:Destroy()
