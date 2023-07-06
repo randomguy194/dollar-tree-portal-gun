@@ -14,6 +14,7 @@ local portal2 = nil
 local tpcd = false
 local toolequipped = false
 local character = player.Character
+local camera = workspace.CurrentCamera
 -- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
@@ -111,6 +112,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal2.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2)
+                                                camera.CFrame = portal2.CFrame
 						wait(0.3)
 						tpcd = false
 					end
@@ -218,6 +220,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*2)
+                                                camera.CFrame = portal1.CFrame
 						wait(0.3)
 						tpcd = false
 					end
