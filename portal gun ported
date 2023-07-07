@@ -87,9 +87,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				if portal2 then
 					portalin1.BrickColor = BrickColor.new("Really black")
-					portalin1.Material = Enum.Material.ForceField
 					portalin2.BrickColor = BrickColor.new("Really black")
-					portalin2.Material = Enum.Material.ForceField
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683216197"
 				else
 					portalin1.BrickColor = BrickColor.new("Bright blue")
@@ -140,9 +138,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portal1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				if portal2 then
 					portalin1.BrickColor = BrickColor.new("Really black")
-					portalin1.Material = Enum.Material.ForceField
 					portalin2.BrickColor = BrickColor.new("Really black")
-					portalin2.Material = Enum.Material.ForceField
 				else
 					portalin1.BrickColor = BrickColor.new("Bright blue")
 					portalin1.Material = Enum.Material.Neon
@@ -195,9 +191,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				if portal1 then
 					portalin2.BrickColor = BrickColor.new("Really black")
-					portalin2.Material = Enum.Material.ForceField
 					portalin1.BrickColor = BrickColor.new("Really black")
-					portalin1.Material = Enum.Material.ForceField
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683216197"
 				else
 					portalin2.BrickColor = BrickColor.new("Neon orange")
@@ -247,9 +241,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				if portal1 then
 					portalin2.BrickColor = BrickColor.new("Really black")
-					portalin2.Material = Enum.Material.ForceField
 					portalin1.BrickColor = BrickColor.new("Really black")
-					portalin1.Material = Enum.Material.ForceField
 				else
 					portalin2.BrickColor = BrickColor.new("Neon orange")
 					portalin2.Material = Enum.Material.Neon
