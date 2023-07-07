@@ -108,7 +108,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						Teleport2:Play()
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2.5)
+						workspace.CurrentCamera.CFrame =  portal2.CFrame
 						wait(0.3)
 						tpcd = false
 					end
@@ -215,7 +216,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						Teleport:Play()
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*2)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*2.5)
+						workspace.CurrentCamera.CFrame =  portal1.CFrame
 						wait(0.3)
 						tpcd = false
 					end
@@ -323,7 +325,7 @@ player.CharacterAdded:Connect(function(char)
 	tool.GripPos = Vector3.new(0,-0.5,0)
 	tool.Parent = player.Backpack
 	local light = Instance.new("SpotLight", handle)
-	light.Angle = 90
+	light.Angle = 45
 	light.Brightness = 2
 	light.Range = 60
 	light.Enabled = false
@@ -483,7 +485,7 @@ tool.Name = "Portal Gun"
 tool.GripPos = Vector3.new(0,-0.5,0)
 tool.Parent = player.Backpack
 local light = Instance.new("SpotLight", handle)
-light.Angle = 90
+light.Angle = 45
 light.Brightness = 2
 light.Range = 60
 light.Enabled = false
