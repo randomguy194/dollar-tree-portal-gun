@@ -13,6 +13,7 @@ local portal1 = nil
 local portal2 = nil
 local tpcd = false
 local toolequipped = false
+local camera = workspace.CurrentCamera
 local character = player.Character
 -- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
@@ -93,7 +94,6 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683216197"
 				else
 					portalin1.BrickColor = BrickColor.new("Bright blue")
-					portalin1.Material = Enum.Material.Neon
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 				end
 				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
@@ -109,10 +109,10 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal2.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2.5)
-						workspace.CurrentCamera.CFrame =  portal2.CFrame
+						camera.CFrame =  portal2.CFrame
 						wait(0.2)
 						tpcd = false
-					end
+					end		
 				end)
 			else
 				open1:Destroy()
@@ -213,7 +213,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						player.Character.Humanoid.Sit = true
 						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
 						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*2.5)
-						workspace.CurrentCamera.CFrame =  portal1.CFrame
+						camera.CFrame =  portal1.CFrame
 						wait(0.2)
 						tpcd = false
 					end
@@ -329,7 +329,7 @@ player.CharacterAdded:Connect(function(char)
 	handle.Material = Enum.Material.SmoothPlastic
 	handle.Parent = tool
 	tool.Name = "Portal Gun"
-	tool.GripPos = Vector3.new(0,-0.5,0)
+	tool.GripPos = Vector3.new(0.25,-0.1,0.1)
 	tool.Parent = player.Backpack
 	local light = Instance.new("SpotLight", handle)
 	light.Angle = 45
@@ -503,7 +503,7 @@ handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
 tool.Name = "Portal Gun"
-tool.GripPos = Vector3.new(0,-0.5,0)
+tool.GripPos = Vector3.new(0.25,-0.1,0.1)
 tool.Parent = player.Backpack
 local light = Instance.new("SpotLight", handle)
 light.Angle = 45
