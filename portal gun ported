@@ -267,7 +267,7 @@ player.CharacterAdded:Connect(function(char)
 	portal1 = nil
 	portal2 = nil
 	tpcd = false
-        toolequipped = false
+	toolequipped = false
 	local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	-- Create tool
 	local tool = Instance.new("Tool")
@@ -281,10 +281,12 @@ player.CharacterAdded:Connect(function(char)
 	mesh.Scale = Vector3.new(0.2,0.2,0.2)
 	local cylinder1  = Instance.new("Part", handle)
 	cylinder1.Shape = "Cylinder" --Blue Cylinder
+	cylinder1.Position = Vector3.new(0,-0.1,0)
 	cylinder1.Orientation = Vector3.new(0,90,0)
+	cylinder1.Position = Vector3.new(0,-0.1,0)
 	cylinder1.Size = Vector3.new(2,.5,.5)
 	cylinder1.Material = Enum.Material.Neon
-	cylinder1.BrickColor = BrickColor.new("Really black") 
+	cylinder1.BrickColor = BrickColor.new("Black") 
 	cylinder1.CanCollide = false -- Cylinder
 	local cylinder2  = Instance.new("Part", handle) --cylinder2
 	cylinder2.Shape = "Cylinder" 
@@ -314,7 +316,7 @@ player.CharacterAdded:Connect(function(char)
 	handle.Material = Enum.Material.SmoothPlastic
 	handle.Parent = tool
 	tool.Name = "Portal Gun"
-	tool.GripPos = Vector3.new(0.25,-0.1,0.1)
+	tool.GripPos = Vector3.new(0.35,0.1,0.1)
 	tool.Parent = player.Backpack
 	local light = Instance.new("SpotLight", handle)
 	light.Angle = 45
@@ -337,7 +339,7 @@ player.CharacterAdded:Connect(function(char)
 	end)	
 	tool.Equipped:Connect(function(mouse)
 		equip:Play()
-                toolequipped = true
+		toolequipped = true
 		if portal1 then
 			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 		end 
@@ -406,7 +408,7 @@ player.CharacterAdded:Connect(function(char)
 				portal1 = nil
 				portal2 = nil
 				tpcd = false
-				cylinder1.BrickColor = BrickColor.new("Really black")
+				cylinder1.BrickColor = BrickColor.new("Black")
 				cylinder2.BrickColor = BrickColor.new("Really black") 
 				if portal1 == nil and portal2 == nil then 
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
@@ -442,9 +444,10 @@ mesh.Scale = Vector3.new(0.2,0.2,0.2)
 local cylinder1  = Instance.new("Part", handle)
 cylinder1.Shape = "Cylinder" --Blue Cylinder
 cylinder1.Orientation = Vector3.new(0,90,0)
+cylinder1.Position = Vector3.new(0,-0.1,0)
 cylinder1.Size = Vector3.new(2,.5,.5)
 cylinder1.Material = Enum.Material.Neon
-cylinder1.BrickColor = BrickColor.new("Really black") 
+cylinder1.BrickColor = BrickColor.new("Black") 
 cylinder1.CanCollide = false -- Cylinder
 local cylinder2  = Instance.new("Part", handle) --cylinder2
 cylinder2.Shape = "Cylinder" 
@@ -474,7 +477,7 @@ handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
 tool.Name = "Portal Gun"
-tool.GripPos = Vector3.new(0.25,-0.1,0.1)
+tool.GripPos = Vector3.new(0.35,0.1,0.1)
 tool.Parent = player.Backpack
 local light = Instance.new("SpotLight", handle)
 light.Angle = 45
@@ -567,7 +570,7 @@ mouse.KeyDown:Connect(function(key)
 			portal1 = nil
 			portal2 = nil
 			tpcd = false
-			cylinder1.BrickColor = BrickColor.new("Really black")
+			cylinder1.BrickColor = BrickColor.new("Black")
 			cylinder2.BrickColor = BrickColor.new("Really black") 
 			if portal1 == nil and portal2 == nil then 
 				game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
