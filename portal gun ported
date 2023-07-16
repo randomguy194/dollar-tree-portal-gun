@@ -316,7 +316,11 @@ player.CharacterAdded:Connect(function(char)
 	handle.Material = Enum.Material.SmoothPlastic
 	handle.Parent = tool
 	tool.Name = "Portal Gun"
-	tool.GripPos = Vector3.new(0.35,0.1,0.1)
+	if char.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+	else
+		tool.GripPos = Vector3.new(0,0.7,0.25)
+    end
 	tool.Parent = player.Backpack
 	local light = Instance.new("SpotLight", handle)
 	light.Angle = 45
@@ -416,6 +420,94 @@ player.CharacterAdded:Connect(function(char)
 			end
 		end
 	end)
+	--Arm Animation
+if char.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+	--- Services ---
+	local Players = game:GetService("Players");
+	local RunService = game:GetService("RunService");
+	wait();
+
+	--- Declarations ---
+	local Player = Players.LocalPlayer;
+	local Character = Player.Character or Player.CharacterAdded:Wait();
+
+	local Mouse = Player:GetMouse();
+
+	--- Character ---
+	local RightUpperArm = Character:WaitForChild("RightUpperArm");
+	local RightShoulder = RightUpperArm:WaitForChild("RightShoulder");
+	local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart");
+
+	--- Execution ---
+	RunService.Stepped:Connect(function()
+		if toolequipped == true then
+			local hit = Mouse.Hit;
+
+			-- add the lookVector * 5000 to the hit.p to make the point more "dramatic" (remove it and you'll see why I did this)
+			local direction = (hit.lookVector * 5000);
+
+			-- get the rotation offset (so the arm points correctly depending on your rotation)
+			local rootCFrame = HumanoidRootPart.CFrame;
+			local rotationOffset = (rootCFrame - rootCFrame.p):inverse();
+
+			-- since CFrames are relative, put the rotationOffset first, and then multiple by the point CFrame, and then multiple by the CFrame.Angles so the arm points in the right direction
+			RightShoulder.Transform = rotationOffset * CFrame.new(Vector3.new(0, 0, 0), direction) * CFrame.Angles(math.pi / 2, 0, 0);
+		end
+	end)
+else
+	plr = game.Players.LocalPlayer;
+	repeat
+		wait()
+	until plr.Character
+	char = plr.Character
+	m = plr:GetMouse()
+
+
+	local origRightS = char:WaitForChild("Torso"):WaitForChild("Right Shoulder").C0
+	local origLeftS = char:WaitForChild("Torso"):WaitForChild("Left Shoulder").C0
+	local origNeck = char:WaitForChild("Torso"):WaitForChild("Neck").C0
+	local camera = game.Workspace.CurrentCamera
+
+	local UIS = game:GetService("UserInputService")
+
+	local c = game.Workspace.CurrentCamera
+
+	game:GetService("RunService").RenderStepped:Connect(function(delta)
+
+
+
+
+		if toolequipped == true then
+
+			if char.Torso:FindFirstChild("Right Shoulder") then
+				char.Torso["Right Shoulder"].C0 = char.Torso["Right Shoulder"].C0:Lerp(CFrame.new(1, .65, 0) * CFrame.Angles(-math.asin((m.Origin.p - m.Hit.p).unit.y), 1.55, 0, 0) , 0.1)
+			end
+			if char.Torso:FindFirstChild("Left Shoulder") then
+				char.Torso["Left Shoulder"].C0 = char.Torso["Left Shoulder"].C0:Lerp(CFrame.new(-1, .65, 0) * CFrame.Angles(-math.asin((m.Origin.p - m.Hit.p).unit.y), -1.55, 0, 0) , 0.1)
+			end
+			if char.Torso:FindFirstChild("Neck") then
+				char.Torso["Neck"].C0 = char.Torso["Neck"].C0:Lerp(CFrame.new(0, 1, 0) * CFrame.Angles(-math.asin((m.Origin.p - m.Hit.p).unit.y) + 1.55, 3.15, 0), 0.2)
+			end
+
+		else
+
+			if char.Torso:FindFirstChild("Right Shoulder") then
+				char.Torso["Right Shoulder"].C0 = char.Torso["Right Shoulder"].C0:lerp(origRightS, 0.1)
+			end
+
+
+			if char.Torso:FindFirstChild("Left Shoulder") then
+				char.Torso["Left Shoulder"].C0 = char.Torso["Left Shoulder"].C0:lerp(origLeftS, 0.1)
+			end
+
+
+
+			if char.Torso:FindFirstChild("Neck") then
+				char.Torso["Neck"].C0 = char.Torso["Neck"].C0:lerp(origNeck, 0.1)
+			end
+		end
+	end)
+end
 end)	
 --Teleport1Sound
 Teleport = Instance.new("Sound", Workspace)
@@ -477,7 +569,11 @@ handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
 tool.Name = "Portal Gun"
-tool.GripPos = Vector3.new(0.35,0.1,0.1)
+if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+	else
+		tool.GripPos = Vector3.new(0,0.7,0.25)
+    end
 tool.Parent = player.Backpack
 local light = Instance.new("SpotLight", handle)
 light.Angle = 45
@@ -578,3 +674,91 @@ mouse.KeyDown:Connect(function(key)
 		end
 	end
 end)
+--Arm Animation
+if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+	--- Services ---
+	local Players = game:GetService("Players");
+	local RunService = game:GetService("RunService");
+	wait();
+
+	--- Declarations ---
+	local Player = Players.LocalPlayer;
+	local Character = Player.Character or Player.CharacterAdded:Wait();
+
+	local Mouse = Player:GetMouse();
+
+	--- Character ---
+	local RightUpperArm = Character:WaitForChild("RightUpperArm");
+	local RightShoulder = RightUpperArm:WaitForChild("RightShoulder");
+	local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart");
+
+	--- Execution ---
+	RunService.Stepped:Connect(function()
+		if toolequipped == true then
+			local hit = Mouse.Hit;
+
+			-- add the lookVector * 5000 to the hit.p to make the point more "dramatic" (remove it and you'll see why I did this)
+			local direction = (hit.lookVector * 5000);
+
+			-- get the rotation offset (so the arm points correctly depending on your rotation)
+			local rootCFrame = HumanoidRootPart.CFrame;
+			local rotationOffset = (rootCFrame - rootCFrame.p):inverse();
+
+			-- since CFrames are relative, put the rotationOffset first, and then multiple by the point CFrame, and then multiple by the CFrame.Angles so the arm points in the right direction
+			RightShoulder.Transform = rotationOffset * CFrame.new(Vector3.new(0, 0, 0), direction) * CFrame.Angles(math.pi / 2, 0, 0);
+		end
+	end)
+else
+	plr = game.Players.LocalPlayer;
+	repeat
+		wait()
+	until plr.Character
+	char = plr.Character
+	m = plr:GetMouse()
+
+
+	local origRightS = char:WaitForChild("Torso"):WaitForChild("Right Shoulder").C0
+	local origLeftS = char:WaitForChild("Torso"):WaitForChild("Left Shoulder").C0
+	local origNeck = char:WaitForChild("Torso"):WaitForChild("Neck").C0
+	local camera = game.Workspace.CurrentCamera
+
+	local UIS = game:GetService("UserInputService")
+
+	local c = game.Workspace.CurrentCamera
+
+	game:GetService("RunService").RenderStepped:Connect(function(delta)
+
+
+
+
+		if toolequipped == true then
+
+			if char.Torso:FindFirstChild("Right Shoulder") then
+				char.Torso["Right Shoulder"].C0 = char.Torso["Right Shoulder"].C0:Lerp(CFrame.new(1, .65, 0) * CFrame.Angles(-math.asin((m.Origin.p - m.Hit.p).unit.y), 1.55, 0, 0) , 0.1)
+			end
+			if char.Torso:FindFirstChild("Left Shoulder") then
+				char.Torso["Left Shoulder"].C0 = char.Torso["Left Shoulder"].C0:Lerp(CFrame.new(-1, .65, 0) * CFrame.Angles(-math.asin((m.Origin.p - m.Hit.p).unit.y), -1.55, 0, 0) , 0.1)
+			end
+			if char.Torso:FindFirstChild("Neck") then
+				char.Torso["Neck"].C0 = char.Torso["Neck"].C0:Lerp(CFrame.new(0, 1, 0) * CFrame.Angles(-math.asin((m.Origin.p - m.Hit.p).unit.y) + 1.55, 3.15, 0), 0.2)
+			end
+
+		else
+
+			if char.Torso:FindFirstChild("Right Shoulder") then
+				char.Torso["Right Shoulder"].C0 = char.Torso["Right Shoulder"].C0:lerp(origRightS, 0.1)
+			end
+
+
+			if char.Torso:FindFirstChild("Left Shoulder") then
+				char.Torso["Left Shoulder"].C0 = char.Torso["Left Shoulder"].C0:lerp(origLeftS, 0.1)
+			end
+
+
+
+			if char.Torso:FindFirstChild("Neck") then
+				char.Torso["Neck"].C0 = char.Torso["Neck"].C0:lerp(origNeck, 0.1)
+			end
+		end
+	end)
+end
