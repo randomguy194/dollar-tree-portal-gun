@@ -333,7 +333,7 @@ player.CharacterAdded:Connect(function(char)
 	if char.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 		tool.GripPos = Vector3.new(0.35,0.1,0.1)
 	else
-		tool.GripPos = Vector3.new(0,0.7,0.25)
+		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
 	tool.Parent = player.Backpack
 	local light = Instance.new("SpotLight", handle)
@@ -600,7 +600,7 @@ tool.Name = "Portal Gun"
 if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 		tool.GripPos = Vector3.new(0.35,0.1,0.1)
 	else
-		tool.GripPos = Vector3.new(0,0.7,0.25)
+		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
 tool.Parent = player.Backpack
 local light = Instance.new("SpotLight", handle)
