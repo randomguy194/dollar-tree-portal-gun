@@ -285,8 +285,8 @@ player.CharacterAdded:Connect(function(char)
 	cylinder1.Orientation = Vector3.new(0,90,0)
 	cylinder1.Position = Vector3.new(0,-0.1,0)
 	cylinder1.Size = Vector3.new(2,.5,.5)
-	cylinder1.Material = Enum.Material.Neon
-	cylinder1.BrickColor = BrickColor.new("Black") 
+	cylinder1.Material = Enum.Material.SmoothPlastic
+	cylinder1.Color = Color3.fromRGB(50,50,50)
 	cylinder1.CanCollide = false -- Cylinder
 	local cylinder2  = Instance.new("Part", handle) --cylinder2
 	cylinder2.Shape = "Cylinder" 
@@ -317,7 +317,7 @@ player.CharacterAdded:Connect(function(char)
 	handle.Parent = tool
 	tool.Name = "Portal Gun"
 	if char.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
 		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
@@ -367,6 +367,7 @@ player.CharacterAdded:Connect(function(char)
 			BShoot:Play()
 			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 			cylinder1.BrickColor = BrickColor.new("Bright blue")
+			cylinder1.Material = Enum.Material.Neon
 			cylinder2.BrickColor = BrickColor.new("Bright blue") 
 		end
 	end)
@@ -375,6 +376,7 @@ player.CharacterAdded:Connect(function(char)
 			OShoot:Play()
 			createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 			cylinder1.BrickColor = BrickColor.new("Neon orange")
+			cylinder1.Material = Enum.Material.Neon
 			cylinder2.BrickColor = BrickColor.new("Neon orange") 
 		end
 	end)
@@ -412,7 +414,8 @@ player.CharacterAdded:Connect(function(char)
 				portal1 = nil
 				portal2 = nil
 				tpcd = false
-				cylinder1.BrickColor = BrickColor.new("Black")
+				cylinder1.Material = Enum.Material.SmoothPlastic
+				cylinder1.Color = Color3.fromRGB(50,50,50)
 				cylinder2.BrickColor = BrickColor.new("Really black") 
 				if portal1 == nil and portal2 == nil then 
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
@@ -538,8 +541,8 @@ cylinder1.Shape = "Cylinder" --Blue Cylinder
 cylinder1.Orientation = Vector3.new(0,90,0)
 cylinder1.Position = Vector3.new(0,-0.1,0)
 cylinder1.Size = Vector3.new(2,.5,.5)
-cylinder1.Material = Enum.Material.Neon
-cylinder1.BrickColor = BrickColor.new("Black") 
+cylinder1.Material = Enum.Material.SmoothPlastic
+cylinder1.Color = Color3.fromRGB(50,50,50)
 cylinder1.CanCollide = false -- Cylinder
 local cylinder2  = Instance.new("Part", handle) --cylinder2
 cylinder2.Shape = "Cylinder" 
@@ -570,7 +573,7 @@ handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
 tool.Name = "Portal Gun"
 if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
 		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
@@ -620,6 +623,7 @@ mouse.Button1Down:Connect(function()
 		BShoot:Play()
 		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 		cylinder1.BrickColor = BrickColor.new("Bright blue") 
+		cylinder1.Material = Enum.Material.Neon
 		cylinder2.BrickColor = BrickColor.new("Bright blue") 
 	end
 end)
@@ -628,6 +632,7 @@ mouse.Button2Down:Connect(function()
 		OShoot:Play()
 		createportal(handle.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 		cylinder1.BrickColor = BrickColor.new("Neon orange")
+		cylinder1.Material = Enum.Material.Neon
 		cylinder2.BrickColor = BrickColor.new("Neon orange") 
 	end
 end)
@@ -666,7 +671,8 @@ mouse.KeyDown:Connect(function(key)
 			portal1 = nil
 			portal2 = nil
 			tpcd = false
-			cylinder1.BrickColor = BrickColor.new("Black")
+			cylinder1.Material = Enum.Material.SmoothPlastic
+			cylinder1.Color = Color3.fromRGB(50,50,50)
 			cylinder2.BrickColor = BrickColor.new("Really black") 
 			if portal1 == nil and portal2 == nil then 
 				game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
