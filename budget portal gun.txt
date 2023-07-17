@@ -303,7 +303,7 @@ player.CharacterAdded:Connect(function(char)
 	handle.Parent = tool
 	tool.Name = "Budget Portal Gun"
 	if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
 		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
@@ -540,7 +540,7 @@ handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
 tool.Name = "Budget Portal Gun"
 if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
 		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
