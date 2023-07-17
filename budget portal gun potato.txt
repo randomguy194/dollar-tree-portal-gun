@@ -276,6 +276,7 @@ player.CharacterAdded:Connect(function(char)
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
 	handle.CanCollide = false
+        tool.ToolTip = ("made with dollar store materials comes with a potato friend")
 	tool.TextureId = "rbxassetid://13584132083"
 	tool.CanBeDropped = false
 	local mesh = Instance.new("SpecialMesh", handle)
@@ -317,9 +318,9 @@ player.CharacterAdded:Connect(function(char)
 	handle.Size = Vector3.new(1.1,1.1,2.8)
 	handle.Material = Enum.Material.SmoothPlastic
 	handle.Parent = tool
-	tool.Name = "Budget Portal Gun"
+	tool.Name = "budget portal gun"
 	if char.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
 		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
@@ -359,7 +360,7 @@ player.CharacterAdded:Connect(function(char)
 		if portal1 == nil and portal2 == nil then 
 			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
 		end
-		wait(8)
+		wait(6)
 		if potato then
 			potato.Volume = 0
 		end
@@ -527,6 +528,7 @@ Teleport2.Volume = 0.2
 local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
 handle.CanCollide = false
+tool.ToolTip = ("made with dollar store materials comes with a potato friend")
 tool.TextureId = "rbxassetid://13584132083"
 tool.CanBeDropped = false
 local mesh = Instance.new("SpecialMesh", handle)
@@ -568,9 +570,9 @@ handle.Color = Color3.fromRGB(255,255,255)
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
-tool.Name = "Budget Portal Gun"
+tool.Name = "budget portal gun"
 if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-		tool.GripPos = Vector3.new(0.35,0.1,0.1)
+		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
 		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
     end
@@ -610,7 +612,7 @@ tool.Equipped:Connect(function(mouse)
 	end
 	equip:Play()
 	potato:Play()
-	wait(8)
+	wait(6)
 	if potato then
 		potato.Volume = 0
 	end
