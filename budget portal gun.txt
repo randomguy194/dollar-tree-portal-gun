@@ -39,7 +39,6 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 			orb.BrickColor = BrickColor.new("Neon orange")
 		end
 		orb.Material = Enum.Material.Neon
-		orb.Transparency = 1
 		orb.Parent = workspace
 		local tween = ts:Create(orb,info,{Position=rpos})
 		tween:Play()
@@ -353,14 +352,14 @@ player.CharacterAdded:Connect(function(char)
 	mouse.Button1Down:Connect(function()
 		if tool.Parent == char and toolequipped == true then
 			BShoot:Play()
-			createportal(workspace.CurrentCamera.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
+			createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 			cylinder1.BrickColor = BrickColor.new("Bright blue")
 		end
 	end)
 	mouse.Button2Down:Connect(function()
 		if tool.Parent == char and toolequipped == true then
 			OShoot:Play()
-			createportal(workspace.CurrentCamera.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
+			createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 			cylinder1.BrickColor = BrickColor.new("Neon orange")
 		end
 	end)
@@ -591,14 +590,14 @@ end)
 mouse.Button1Down:Connect(function()
 	if tool.parent == player.Character and toolequipped == true then
 		BShoot:Play()
-		createportal(workspace.CurrentCamera.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
+		createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 		cylinder1.BrickColor = BrickColor.new("Bright blue") 
 	end
 end)
 mouse.Button2Down:Connect(function()
 	if tool.parent == player.Character and toolequipped == true then
 		OShoot:Play()
-		createportal(workspace.CurrentCamera.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
+		createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 		cylinder1.BrickColor = BrickColor.new("Neon orange") 
 	end
 end)
