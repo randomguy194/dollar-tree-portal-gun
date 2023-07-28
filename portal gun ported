@@ -57,7 +57,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				sp1.Scale = Vector3.new(1,1.33,.05)
 				sp1.Offset = Vector3.new(0,0,-0.02)
 				idle1 = Instance.new("Sound", portal1)
-				idle1.SoundId = "rbxassetid://13746760911"
+				idle1.SoundId = "rbxassetid://9063726568"
 				idle1.Looped = true
 				idle1.Volume = 0.2
 				open1 = Instance.new("Sound", portal1)
@@ -66,7 +66,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				open1.Volume = 0.35
 				open1.PlayOnRemove = true 
 				soundopen1 = Instance.new("Sound", portal1)
-				soundopen1.SoundId = "rbxassetid://13753081578"
+				soundopen1.SoundId = "rbxassetid://171399373"
 				soundopen1.RollOffMinDistance = 30
 				soundopen1.Volume = 0.6
 				soundopen1:Play()
@@ -162,7 +162,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				sp2.Scale = Vector3.new(1,1.33,0.05)
 				sp2.Offset = Vector3.new(0,0,-0.02)
 				idle2 = Instance.new("Sound", portal2)
-				idle2.SoundId = "rbxassetid://13746760911"
+				idle2.SoundId = "rbxassetid://9063726568"
 				idle2.Looped = true
 				idle2.Volume = 0.2
 				open2 = Instance.new("Sound", portal2)
@@ -170,8 +170,9 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				open2.Volume = 0.35
 				open2.PlayOnRemove = true 
 				soundopen2 = Instance.new("Sound", portal2)
-				soundopen2.SoundId = "rbxassetid://13753082481"
+				soundopen2.SoundId = "rbxassetid://171399373"
 				soundopen2.RollOffMinDistance = 30
+				soundopen2.Pitch = 1.02	
 				soundopen2.Volume = 0.6
 				soundopen2:Play()
 				portal2.Size = Vector3.new(.7,.7,.7)
@@ -319,9 +320,9 @@ player.CharacterAdded:Connect(function(char)
 	soundclose = Instance.new("Sound", handle)
 	soundclose.SoundId = "rbxassetid://13489877278"
 	BShoot = Instance.new("Sound", handle)
-	BShoot.SoundId = "rbxassetid://13753077478"
+	BShoot.SoundId = "rbxassetid://182981554"
 	OShoot = Instance.new("Sound", handle)
-	OShoot.SoundId = "rbxassetid://13753078644"
+	OShoot.SoundId = "rbxassetid://142774034"
 	local gravitygun = Instance.new("Sound", handle)
 	gravitygun.Looped = true
 	gravitygun.SoundId = "rbxassetid://14225329151"
@@ -650,17 +651,13 @@ player.CharacterAdded:Connect(function(char)
 	end
 end)	
 --Teleport1Sound
-Teleport = Instance.new("Sound", Workspace)
-Teleport.SoundId = "rbxassetid://13489875496"
-Teleport.PlaybackSpeed = 0.88
-Teleport.Volume = 0.2
+Teleport = Instance.new("Sound", workspace)
+Teleport.SoundId = "rbxassetid://232806289"
 --Teleport2Sound
-Teleport2 = Instance.new("Sound", Workspace)
-Teleport2.SoundId = "rbxassetid://13489876588"
-Teleport2.PlaybackSpeed = 0.88
-Teleport2.Volume = 0.2
+Teleport2 = Instance.new("Sound", workspace)
+Teleport2.SoundId = "rbxassetid://232806289"
 --ExecuteSound
-Execute = Instance.new("Sound", Workspace)
+Execute = Instance.new("Sound", workspace)
 Execute.SoundId = "rbxassetid://2765274358"
 Execute:Play()
 --GiveToolOnExecution
@@ -700,9 +697,9 @@ equip.SoundId = "rbxassetid://13489868679"
 soundclose = Instance.new("Sound", handle)
 soundclose.SoundId = "rbxassetid://13489877278"
 BShoot = Instance.new("Sound", handle)
-BShoot.SoundId = "rbxassetid://13753077478"
+BShoot.SoundId = "rbxassetid://182981554"
 OShoot = Instance.new("Sound", handle)
-OShoot.SoundId = "rbxassetid://13753078644"
+OShoot.SoundId = "rbxassetid://142774034"
 handle.Name = "Handle"
 local gravitygun = Instance.new("Sound", handle)
 gravitygun.Looped = true
