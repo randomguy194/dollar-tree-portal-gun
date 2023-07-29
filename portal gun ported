@@ -281,7 +281,7 @@ player.CharacterAdded:Connect(function(char)
 		Dragger:Destroy()
 		Dragger = nil
 	end
-	local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	-- Create tool
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
@@ -315,17 +315,13 @@ player.CharacterAdded:Connect(function(char)
 	local weld1 = Instance.new("WeldConstraint", tool)
 	weld1.Part0 = handle
 	weld1.Part1 = cylinder1 --bluecylinder
-	equip = Instance.new("Sound", handle) -- sounds
-	equip.SoundId = "rbxassetid://13489868679"
-	soundclose = Instance.new("Sound", handle)
-	soundclose.SoundId = "rbxassetid://13489877278"
 	BShoot = Instance.new("Sound", handle)
 	BShoot.SoundId = "rbxassetid://182981554"
 	OShoot = Instance.new("Sound", handle)
 	OShoot.SoundId = "rbxassetid://142774034"
 	local gravitygun = Instance.new("Sound", handle)
 	gravitygun.Looped = true
-	gravitygun.SoundId = "rbxassetid://14225329151"
+	gravitygun.SoundId = "rbxassetid://7449423195"
 	handle.Name = "Handle"
 	handle.Color = Color3.fromRGB(255,255,255)
 	handle.Size = Vector3.new(1.1,1.1,2.8)
@@ -358,7 +354,6 @@ player.CharacterAdded:Connect(function(char)
 		end
 	end)	
 	tool.Equipped:Connect(function(mouse)
-		equip:Play()
 		toolequipped = true
 		if portal1 then
 			game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
@@ -438,12 +433,10 @@ player.CharacterAdded:Connect(function(char)
 				if portal1 then
 					portal1:Destroy()
 					portalin1:Destroy()
-					soundclose:Play()
 				end
 				if portal2 then
 					portal2:Destroy()
 					portalin2:Destroy()
-					soundclose:Play()
 				end
 				portal1 = nil
 				portal2 = nil
@@ -692,10 +685,6 @@ weld.Part1 = cylinder2 --bluecylinder
 local weld1 = Instance.new("WeldConstraint", tool)
 weld1.Part0 = handle
 weld1.Part1 = cylinder1 --bluecylinder
-equip = Instance.new("Sound", handle) -- sounds
-equip.SoundId = "rbxassetid://13489868679"
-soundclose = Instance.new("Sound", handle)
-soundclose.SoundId = "rbxassetid://13489877278"
 BShoot = Instance.new("Sound", handle)
 BShoot.SoundId = "rbxassetid://182981554"
 OShoot = Instance.new("Sound", handle)
@@ -703,7 +692,7 @@ OShoot.SoundId = "rbxassetid://142774034"
 handle.Name = "Handle"
 local gravitygun = Instance.new("Sound", handle)
 gravitygun.Looped = true
-gravitygun.SoundId = "rbxassetid://14225329151"
+gravitygun.SoundId = "rbxassetid://7449423195"
 handle.Color = Color3.fromRGB(255,255,255)
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
@@ -747,7 +736,6 @@ tool.Equipped:Connect(function(mouse)
 	if portal1 == nil and portal2 == nil then 
 		game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
 	end
-	equip:Play()
 	toolequipped = true
 end)
 tool.Unequipped:Connect(function(mouse)
@@ -813,12 +801,10 @@ mouse.KeyDown:Connect(function(key)
 			if portal1 then
 				portal1:Destroy()	
 				portalin1:Destroy()
-				soundclose:Play()
 			end
 			if portal2 then
 				portal2:Destroy()
 				portalin2:Destroy()
-				soundclose:Play()
 			end
 			portal1 = nil
 			portal2 = nil
