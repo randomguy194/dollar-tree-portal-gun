@@ -5,7 +5,7 @@ local de = game:GetService("Debris")
 -- Objs
 local player = game.Players.LocalPlayer
 warn("'Speedy thing goes in, speedy thing comes out.'")
-warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight")
+warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight | E: Pick Up Unanchored Parts")
 local mouse = player:GetMouse()
 local portal1 = nil
 local portal2 = nil
@@ -281,7 +281,7 @@ player.CharacterAdded:Connect(function(char)
 		Dragger:Destroy()
 		Dragger = nil
 	end
-local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+	local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	-- Create tool
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
@@ -309,12 +309,77 @@ local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	cylinder2.Material = Enum.Material.Neon
 	cylinder2.BrickColor = BrickColor.new("Really black") 
 	cylinder2.CanCollide = false -- Cylinder
-	local weld = Instance.new("WeldConstraint", tool)
+	local GGblock1 = Instance.new("Part", handle) -- GG Field
+	GGblock1.CanCollide = false 
+	GGblock1.BrickColor = BrickColor.new("Pastel Blue")
+	GGblock1.Material = Enum.Material.Neon
+	GGblock1.Position = Vector3.new(0.025,0.355,-2.277)
+	GGblock1.Size = Vector3.new(0.05, 0.743, 0.05)
+	local GGblock2 = Instance.new("Part", handle) 
+	GGblock2.CanCollide = false 
+	GGblock2.BrickColor = BrickColor.new("Pastel Blue")
+	GGblock2.Material = Enum.Material.Neon
+	GGblock2.Position = Vector3.new(-0.433, -0.377, -2.26)
+	GGblock2.Orientation = Vector3.new(39.204, -86.193, -4.388)
+	GGblock2.Size = Vector3.new(0.05, 0.05, 1.222)
+	local GGblock3 = Instance.new("Part", handle) 
+	GGblock3.CanCollide = false 
+	GGblock3.BrickColor = BrickColor.new("Pastel Blue")
+	GGblock3.Material = Enum.Material.Neon
+	GGblock3.Position = Vector3.new(0.486, -0.37, -2.258)
+	GGblock3.Orientation = Vector3.new(37.547, 86.861, 176.758)
+	GGblock3.Size = Vector3.new(0.05, 0.05, 1.222)
+	local GGBall1 = Instance.new("Part", handle) 
+	GGBall1.Shape = Enum.PartType.Ball
+	GGBall1.CanCollide = false 
+	GGBall1.Material = Enum.Material.Neon
+	GGBall1.BrickColor = BrickColor.new("Pastel Blue")
+	GGBall1.Size = Vector3.new(0.224,0.224,0.224)
+	GGBall1.Position = Vector3.new(0.051, 0.699, -2.306)
+	local GGBall2 = Instance.new("Part", handle) 
+	GGBall2.Shape = Enum.PartType.Ball
+	GGBall2.CanCollide = false 
+	GGBall2.Material = Enum.Material.Neon
+	GGBall2.BrickColor = BrickColor.new("Pastel Blue")
+	GGBall2.Size = Vector3.new(0.224,0.224,0.224)
+	GGBall2.Position = Vector3.new(-0.93, -0.765, -2.23)
+	local GGBall3 = Instance.new("Part", handle) 
+	GGBall3.Shape = Enum.PartType.Ball
+	GGBall3.CanCollide = false 
+	GGBall3.Material = Enum.Material.Neon
+	GGBall3.BrickColor = BrickColor.new("Pastel Blue")
+	GGBall3.Size = Vector3.new(0.224,0.224,0.224)
+	GGBall3.Position = Vector3.new(0.931, -0.743, -2.23) -- GG Field
+	local weld = Instance.new("WeldConstraint", tool) --Welds
 	weld.Part0 = handle
-	weld.Part1 = cylinder2 --bluecylinder
+	weld.Part1 = cylinder2 
 	local weld1 = Instance.new("WeldConstraint", tool)
 	weld1.Part0 = handle
-	weld1.Part1 = cylinder1 --bluecylinder
+	weld1.Part1 = cylinder1 
+	local weld2 = Instance.new("WeldConstraint", tool)
+	weld2.Part0 = handle
+	weld2.Part1 = GGblock1
+	local weld3 = Instance.new("WeldConstraint", tool)
+	weld3.Part0 = handle
+	weld3.Part1 = GGblock2
+	local weld4 = Instance.new("WeldConstraint", tool)
+	weld4.Part0 = handle
+	weld4.Part1 = GGblock3
+	local weld5 = Instance.new("WeldConstraint", tool)
+	weld5.Part0 = handle
+	weld5.Part1 = GGBall1
+	local weld6 = Instance.new("WeldConstraint", tool)
+	weld6.Part0 = handle
+	weld6.Part1 = GGBall2
+	local weld7 = Instance.new("WeldConstraint", tool)
+	weld7.Part0 = handle
+	weld7.Part1 = GGBall3 --Welds 
+	GGblock1.Transparency = 1
+	GGblock2.Transparency = 1
+	GGblock3.Transparency = 1
+	GGBall1.Transparency = 1
+	GGBall2.Transparency = 1
+	GGBall3.Transparency = 1
 	BShoot = Instance.new("Sound", handle)
 	BShoot.SoundId = "rbxassetid://182981554"
 	OShoot = Instance.new("Sound", handle)
@@ -382,6 +447,12 @@ local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 			Dragger = nil
 		end
 		gravitygun:Stop()
+		GGblock1.Transparency = 1
+		GGblock2.Transparency = 1
+		GGblock3.Transparency = 1
+		GGBall1.Transparency = 1
+		GGBall2.Transparency = 1
+		GGBall3.Transparency = 1
 	end)
 	-- Activate
 	mouse.Button1Down:Connect(function()
@@ -464,6 +535,12 @@ local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 							GrabStart = true
 							isHolding = true	
 							gravitygun:Play()
+							GGblock1.Transparency = 0
+							GGblock2.Transparency = 0
+							GGblock3.Transparency = 0
+							GGBall1.Transparency = 0
+							GGBall2.Transparency = 0
+							GGBall3.Transparency = 0
 							game.Players.LocalPlayer:GetMouse().Icon = ""
 
 							local DragBall = createDragBall()
@@ -494,6 +571,12 @@ local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 						Dragger:Destroy()
 						Dragger = nil
 					end
+					GGblock1.Transparency = 1
+					GGblock2.Transparency = 1
+					GGblock3.Transparency = 1
+					GGBall1.Transparency = 1
+					GGBall2.Transparency = 1
+					GGBall3.Transparency = 1
 					if portal1 then
 						game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 					end 
@@ -679,20 +762,85 @@ cylinder2.Size = Vector3.new(1,.2,.2)
 cylinder2.Material = Enum.Material.Neon
 cylinder2.BrickColor = BrickColor.new("Really black") 
 cylinder2.CanCollide = false -- Cylinder
-local weld = Instance.new("WeldConstraint", tool)
+local GGblock1 = Instance.new("Part", handle) -- GG Field
+GGblock1.CanCollide = false 
+GGblock1.BrickColor = BrickColor.new("Pastel Blue")
+GGblock1.Material = Enum.Material.Neon
+GGblock1.Position = Vector3.new(0.025,0.355,-2.277)
+GGblock1.Size = Vector3.new(0.05, 0.743, 0.05)
+local GGblock2 = Instance.new("Part", handle) 
+GGblock2.CanCollide = false 
+GGblock2.BrickColor = BrickColor.new("Pastel Blue")
+GGblock2.Material = Enum.Material.Neon
+GGblock2.Position = Vector3.new(-0.433, -0.377, -2.26)
+GGblock2.Orientation = Vector3.new(39.204, -86.193, -4.388)
+GGblock2.Size = Vector3.new(0.05, 0.05, 1.222)
+local GGblock3 = Instance.new("Part", handle) 
+GGblock3.CanCollide = false 
+GGblock3.BrickColor = BrickColor.new("Pastel Blue")
+GGblock3.Material = Enum.Material.Neon
+GGblock3.Position = Vector3.new(0.486, -0.37, -2.258)
+GGblock3.Orientation = Vector3.new(37.547, 86.861, 176.758)
+GGblock3.Size = Vector3.new(0.05, 0.05, 1.222)
+local GGBall1 = Instance.new("Part", handle) 
+GGBall1.Shape = Enum.PartType.Ball
+GGBall1.CanCollide = false 
+GGBall1.Material = Enum.Material.Neon
+GGBall1.BrickColor = BrickColor.new("Pastel Blue")
+GGBall1.Size = Vector3.new(0.224,0.224,0.224)
+GGBall1.Position = Vector3.new(0.051, 0.699, -2.306)
+local GGBall2 = Instance.new("Part", handle) 
+GGBall2.Shape = Enum.PartType.Ball
+GGBall2.CanCollide = false 
+GGBall2.Material = Enum.Material.Neon
+GGBall2.BrickColor = BrickColor.new("Pastel Blue")
+GGBall2.Size = Vector3.new(0.224,0.224,0.224)
+GGBall2.Position = Vector3.new(-0.93, -0.765, -2.23)
+local GGBall3 = Instance.new("Part", handle) 
+GGBall3.Shape = Enum.PartType.Ball
+GGBall3.CanCollide = false 
+GGBall3.Material = Enum.Material.Neon
+GGBall3.BrickColor = BrickColor.new("Pastel Blue")
+GGBall3.Size = Vector3.new(0.224,0.224,0.224)
+GGBall3.Position = Vector3.new(0.931, -0.743, -2.23) -- GG Field
+local weld = Instance.new("WeldConstraint", tool) --Welds
 weld.Part0 = handle
-weld.Part1 = cylinder2 --bluecylinder
+weld.Part1 = cylinder2 
 local weld1 = Instance.new("WeldConstraint", tool)
 weld1.Part0 = handle
-weld1.Part1 = cylinder1 --bluecylinder
+weld1.Part1 = cylinder1 
+local weld2 = Instance.new("WeldConstraint", tool)
+weld2.Part0 = handle
+weld2.Part1 = GGblock1
+local weld3 = Instance.new("WeldConstraint", tool)
+weld3.Part0 = handle
+weld3.Part1 = GGblock2
+local weld4 = Instance.new("WeldConstraint", tool)
+weld4.Part0 = handle
+weld4.Part1 = GGblock3
+local weld5 = Instance.new("WeldConstraint", tool)
+weld5.Part0 = handle
+weld5.Part1 = GGBall1
+local weld6 = Instance.new("WeldConstraint", tool)
+weld6.Part0 = handle
+weld6.Part1 = GGBall2
+local weld7 = Instance.new("WeldConstraint", tool)
+weld7.Part0 = handle
+weld7.Part1 = GGBall3 --Welds 
+GGblock1.Transparency = 1
+GGblock2.Transparency = 1
+GGblock3.Transparency = 1
+GGBall1.Transparency = 1
+GGBall2.Transparency = 1
+GGBall3.Transparency = 1
 BShoot = Instance.new("Sound", handle)
 BShoot.SoundId = "rbxassetid://182981554"
 OShoot = Instance.new("Sound", handle)
 OShoot.SoundId = "rbxassetid://142774034"
-handle.Name = "Handle"
 local gravitygun = Instance.new("Sound", handle)
 gravitygun.Looped = true
 gravitygun.SoundId = "rbxassetid://7449423195"
+handle.Name = "Handle"
 handle.Color = Color3.fromRGB(255,255,255)
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
@@ -749,6 +897,12 @@ tool.Unequipped:Connect(function(mouse)
 		Dragger = nil
 	end
 	gravitygun:Stop()
+	GGblock1.Transparency = 1
+	GGblock2.Transparency = 1
+	GGblock3.Transparency = 1
+	GGBall1.Transparency = 1
+	GGBall2.Transparency = 1
+	GGBall3.Transparency = 1
 end)
 -- Activate
 mouse.Button1Down:Connect(function()
@@ -832,6 +986,12 @@ mouse.KeyDown:Connect(function(key)
 						GrabStart = true
 						isHolding = true	
 						gravitygun:Play()
+						GGblock1.Transparency = 0
+						GGblock2.Transparency = 0
+						GGblock3.Transparency = 0
+						GGBall1.Transparency = 0
+						GGBall2.Transparency = 0
+						GGBall3.Transparency = 0
 						game.Players.LocalPlayer:GetMouse().Icon = ""
 
 						local DragBall = createDragBall()
@@ -862,6 +1022,12 @@ mouse.KeyDown:Connect(function(key)
 					Dragger:Destroy()
 					Dragger = nil
 				end
+				GGblock1.Transparency = 1
+				GGblock2.Transparency = 1
+				GGblock3.Transparency = 1
+				GGBall1.Transparency = 1
+				GGBall2.Transparency = 1
+				GGBall3.Transparency = 1
 				if portal1 then
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683350503"
 				end 
