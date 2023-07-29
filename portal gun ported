@@ -1,4 +1,4 @@
--- Services (portal gun ported)
+-- Services
 local cs = game:GetService("CollectionService")
 local ts = game:GetService("TweenService")
 local de = game:GetService("Debris")
