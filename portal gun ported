@@ -1,4 +1,4 @@
-if game.PlaceId == 13166293021 then -- pink portal gun exclusive to 7 random barbie games 
+if game.PlaceId == 13166293021 then -- pink portal gun exclusive to 8 random barbie games 
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/randomguy194/dollar-tree-portal-gun/main/Special%20Skin%201'))()
 elseif game.PlaceId == 13998647257 then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/randomguy194/dollar-tree-portal-gun/main/Special%20Skin%201'))()
