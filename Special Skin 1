@@ -285,12 +285,12 @@ player.CharacterAdded:Connect(function(char)
 	-- Create tool
 	local tool = Instance.new("Tool")
 	local handle = Instance.new("Part")
+        tool.ToolTip = "is plastic a portal surface?!"
 	handle.CanCollide = false
 	tool.TextureId = "rbxassetid://13684639970"
 	tool.CanBeDropped = false
 	local mesh = Instance.new("SpecialMesh", handle)
 	mesh.MeshId = "rbxassetid://10017565642"
-	mesh.TextureId = "rbxassetid://10017566144"
 	mesh.Scale = Vector3.new(0.2,0.2,0.2)
 	local cylinder1  = Instance.new("Part", handle)
 	cylinder1.Shape = "Cylinder" --Blue Cylinder
@@ -388,7 +388,7 @@ player.CharacterAdded:Connect(function(char)
 	gravitygun.Looped = true
 	gravitygun.SoundId = "rbxassetid://7449423195"
 	handle.Name = "Handle"
-	handle.Color = Color3.fromRGB(255,255,255)
+	handle.BrickColor = BrickColor.new("Pink")
 	handle.Size = Vector3.new(1.1,1.1,2.8)
 	handle.Material = Enum.Material.SmoothPlastic
 	handle.Parent = tool
