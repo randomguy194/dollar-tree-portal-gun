@@ -1,10 +1,10 @@
--- Services (Portal Stories Mel Skin)
+-- Services (Mel's Portal Gun from Portal Stories: Mel (Exclusive skin for the game, De Pride Isle Sanatorium))
 local cs = game:GetService("CollectionService")
 local ts = game:GetService("TweenService")
 local de = game:GetService("Debris")
 -- Objs
 local player = game.Players.LocalPlayer
-warn("'Speedy thing goes in, speedy thing comes out.'")
+warn("Mel's Portal Gun from Portal Stories: Mel (Exclusive skin for the game, De Pride Isle Sanatorium)")
 warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight | E: Pick Up Unanchored Parts")
 local mouse = player:GetMouse()
 local portal1 = nil
@@ -284,49 +284,51 @@ player.CharacterAdded:Connect(function(char)
 	local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	-- Create tool
 	local tool = Instance.new("Tool")
+	tool.ToolTip = "juke cannibals and nurses"	
 	local handle = Instance.new("Part")
 	handle.CanCollide = false
-	tool.TextureId = "rbxassetid://13684639970"
 	tool.CanBeDropped = false
-	local mesh = Instance.new("SpecialMesh", handle)
-	mesh.MeshId = "rbxassetid://10017565642"
-	mesh.TextureId = "rbxassetid://10017566144"
-	mesh.Scale = Vector3.new(0.2,0.2,0.2)
+	local MeshPart = Instance.new("Part", handle)
+	MeshPart.CanCollide = false
+	MeshPart.Orientation = Vector3.new(0,180,0)
+	local Mesh = Instance.new("SpecialMesh", MeshPart)
+	Mesh.MeshId = "rbxassetid://5446245015"
+	Mesh.TextureId = "rbxassetid://14192504911"
+	Mesh.Scale = Vector3.new(0.2,0.2,0.2)
 	local cylinder1  = Instance.new("Part", handle)
 	cylinder1.Shape = "Cylinder" --Blue Cylinder
-	cylinder1.Position = Vector3.new(0,-0.1,0)
 	cylinder1.Orientation = Vector3.new(0,90,0)
-	cylinder1.Position = Vector3.new(0,-0.1,0)
-	cylinder1.Size = Vector3.new(2,.5,.5)
-	cylinder1.Material = Enum.Material.SmoothPlastic
-	cylinder1.Color = Color3.fromRGB(50,50,50)
+	cylinder1.Position = Vector3.new(-0.04,-0.089,0.136)
+	cylinder1.Size = Vector3.new(1.292,0.4,1)
+	cylinder1.Material = Enum.Material.Neon
+	cylinder1.Color = Color3.fromRGB(19, 238, 165)
 	cylinder1.CanCollide = false -- Cylinder
 	local cylinder2  = Instance.new("Part", handle) --cylinder2
 	cylinder2.Shape = "Cylinder" 
-	cylinder2.Position = Vector3.new(0,0,0.88)
+	cylinder2.Position = Vector3.new(-0.06,0.268,0.961)
 	cylinder2.Orientation = Vector3.new(0,0,-90)
-	cylinder2.Size = Vector3.new(1,.2,.2)
+	cylinder2.Size = Vector3.new(0.113,0.266,0.994)
 	cylinder2.Material = Enum.Material.Neon
-	cylinder2.BrickColor = BrickColor.new("Really black") 
+	cylinder2.Color = Color3.fromRGB(19, 238, 165)	
 	cylinder2.CanCollide = false -- Cylinder
 	local GGblock1 = Instance.new("Part", handle) -- GG Field
 	GGblock1.CanCollide = false 
 	GGblock1.BrickColor = BrickColor.new("Pastel Blue")
 	GGblock1.Material = Enum.Material.Neon
-	GGblock1.Position = Vector3.new(0.025,0.355,-2.277)
+	GGblock1.Position = Vector3.new(0.025,0.355,-2.077)
 	GGblock1.Size = Vector3.new(0.05, 0.743, 0.05)
 	local GGblock2 = Instance.new("Part", handle) 
 	GGblock2.CanCollide = false 
 	GGblock2.BrickColor = BrickColor.new("Pastel Blue")
 	GGblock2.Material = Enum.Material.Neon
-	GGblock2.Position = Vector3.new(-0.433, -0.377, -2.26)
+	GGblock2.Position = Vector3.new(-0.433, -0.377, -2.06)
 	GGblock2.Orientation = Vector3.new(39.204, -86.193, -4.388)
 	GGblock2.Size = Vector3.new(0.05, 0.05, 1.222)
 	local GGblock3 = Instance.new("Part", handle) 
 	GGblock3.CanCollide = false 
 	GGblock3.BrickColor = BrickColor.new("Pastel Blue")
 	GGblock3.Material = Enum.Material.Neon
-	GGblock3.Position = Vector3.new(0.486, -0.37, -2.258)
+	GGblock3.Position = Vector3.new(0.486, -0.37, -2.058)
 	GGblock3.Orientation = Vector3.new(37.547, 86.861, 176.758)
 	GGblock3.Size = Vector3.new(0.05, 0.05, 1.222)
 	local GGBall1 = Instance.new("Part", handle) 
@@ -335,21 +337,21 @@ player.CharacterAdded:Connect(function(char)
 	GGBall1.Material = Enum.Material.Neon
 	GGBall1.BrickColor = BrickColor.new("Pastel Blue")
 	GGBall1.Size = Vector3.new(0.224,0.224,0.224)
-	GGBall1.Position = Vector3.new(0.051, 0.699, -2.306)
+	GGBall1.Position = Vector3.new(0.051, 0.699, -2.106)
 	local GGBall2 = Instance.new("Part", handle) 
 	GGBall2.Shape = Enum.PartType.Ball
 	GGBall2.CanCollide = false 
 	GGBall2.Material = Enum.Material.Neon
 	GGBall2.BrickColor = BrickColor.new("Pastel Blue")
 	GGBall2.Size = Vector3.new(0.224,0.224,0.224)
-	GGBall2.Position = Vector3.new(-0.93, -0.765, -2.23)
+	GGBall2.Position = Vector3.new(-0.93, -0.765, -2.03)
 	local GGBall3 = Instance.new("Part", handle) 
 	GGBall3.Shape = Enum.PartType.Ball
 	GGBall3.CanCollide = false 
 	GGBall3.Material = Enum.Material.Neon
 	GGBall3.BrickColor = BrickColor.new("Pastel Blue")
 	GGBall3.Size = Vector3.new(0.224,0.224,0.224)
-	GGBall3.Position = Vector3.new(0.931, -0.743, -2.23) -- GG Field
+	GGBall3.Position = Vector3.new(0.931, -0.743, -2.03) -- GG Field
 	local weld = Instance.new("WeldConstraint", tool) --Welds
 	weld.Part0 = handle
 	weld.Part1 = cylinder2 
@@ -373,7 +375,10 @@ player.CharacterAdded:Connect(function(char)
 	weld6.Part1 = GGBall2
 	local weld7 = Instance.new("WeldConstraint", tool)
 	weld7.Part0 = handle
-	weld7.Part1 = GGBall3 --Welds 
+	weld7.Part1 = GGBall3  
+	local weld8 = Instance.new("WeldConstraint", tool)
+	weld8.Part0 = handle
+	weld8.Part1 = MeshPart --Welds 
 	GGblock1.Transparency = 1
 	GGblock2.Transparency = 1
 	GGblock3.Transparency = 1
@@ -392,8 +397,9 @@ player.CharacterAdded:Connect(function(char)
 	handle.Size = Vector3.new(1.1,1.1,2.8)
 	handle.Material = Enum.Material.SmoothPlastic
 	handle.Parent = tool
-	tool.Name = "Portal Gun"
-	if char.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+	handle.Transparency = 1
+	tool.Name = "Mel's Portal Gun"
+	if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
 		tool.GripPos = Vector3.new(0.2,0.25,-0.1)
@@ -405,7 +411,7 @@ player.CharacterAdded:Connect(function(char)
 	light.Range = 60
 	light.Enabled = false
 	local click = Instance.new("Sound", handle)
-	click.SoundId = "rbxassetid://5991592592"
+	click.SoundId = "rbxassetid://5991592592"	
 	mouse.KeyDown:Connect(function(key)
 		if key == "f" then 
 			if tool.parent == char and toolequipped == true and isHolding == false then
@@ -460,7 +466,6 @@ player.CharacterAdded:Connect(function(char)
 			BShoot:Play()
 			createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 			cylinder1.BrickColor = BrickColor.new("Bright blue")
-			cylinder1.Material = Enum.Material.Neon
 			cylinder2.BrickColor = BrickColor.new("Bright blue") 
 		end
 	end)
@@ -469,7 +474,6 @@ player.CharacterAdded:Connect(function(char)
 			OShoot:Play()
 			createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 			cylinder1.BrickColor = BrickColor.new("Neon orange")
-			cylinder1.Material = Enum.Material.Neon
 			cylinder2.BrickColor = BrickColor.new("Neon orange") 
 		end
 	end)
@@ -512,9 +516,8 @@ player.CharacterAdded:Connect(function(char)
 				portal1 = nil
 				portal2 = nil
 				tpcd = false
-				cylinder1.Material = Enum.Material.SmoothPlastic
-				cylinder1.Color = Color3.fromRGB(50,50,50)
-				cylinder2.BrickColor = BrickColor.new("Really black") 
+				cylinder1.Color = Color3.fromRGB(19, 238, 165)
+				cylinder2.Color = Color3.fromRGB(19, 238, 165)
 				if portal1 == nil and portal2 == nil then 
 					game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
 				end
@@ -732,54 +735,53 @@ Teleport.SoundId = "rbxassetid://232806289"
 --Teleport2Sound
 Teleport2 = Instance.new("Sound", workspace)
 Teleport2.SoundId = "rbxassetid://232806289"
---ExecuteSound
-Execute = Instance.new("Sound", workspace)
-Execute.SoundId = "rbxassetid://2765274358"
-Execute:Play()
 --GiveToolOnExecution
 local tool = Instance.new("Tool")
+tool.ToolTip = "juke cannibals and nurses"	
 local handle = Instance.new("Part")
 handle.CanCollide = false
-tool.TextureId = "rbxassetid://13684639970"
 tool.CanBeDropped = false
-local mesh = Instance.new("SpecialMesh", handle)
-mesh.MeshId = "rbxassetid://10017565642"
-mesh.TextureId = "rbxassetid://10017566144"
-mesh.Scale = Vector3.new(0.2,0.2,0.2)
+local MeshPart = Instance.new("Part", handle)
+MeshPart.CanCollide = false
+MeshPart.Orientation = Vector3.new(0,180,0)
+local Mesh = Instance.new("SpecialMesh", MeshPart)
+Mesh.MeshId = "rbxassetid://5446245015"
+Mesh.TextureId = "rbxassetid://14192504911"
+Mesh.Scale = Vector3.new(0.2,0.2,0.2)
 local cylinder1  = Instance.new("Part", handle)
 cylinder1.Shape = "Cylinder" --Blue Cylinder
 cylinder1.Orientation = Vector3.new(0,90,0)
-cylinder1.Position = Vector3.new(0,-0.1,0)
-cylinder1.Size = Vector3.new(2,.5,.5)
-cylinder1.Material = Enum.Material.SmoothPlastic
-cylinder1.Color = Color3.fromRGB(50,50,50)
+cylinder1.Position = Vector3.new(-0.04,-0.089,0.136)
+cylinder1.Size = Vector3.new(1.292,0.4,1)
+cylinder1.Material = Enum.Material.Neon
+cylinder1.Color = Color3.fromRGB(19, 238, 165)
 cylinder1.CanCollide = false -- Cylinder
 local cylinder2  = Instance.new("Part", handle) --cylinder2
 cylinder2.Shape = "Cylinder" 
-cylinder2.Position = Vector3.new(0,0,0.88)
+cylinder2.Position = Vector3.new(-0.06,0.268,0.961)
 cylinder2.Orientation = Vector3.new(0,0,-90)
-cylinder2.Size = Vector3.new(1,.2,.2)
+cylinder2.Size = Vector3.new(0.113,0.266,0.994)
 cylinder2.Material = Enum.Material.Neon
-cylinder2.BrickColor = BrickColor.new("Really black") 
+cylinder2.Color = Color3.fromRGB(19, 238, 165)	
 cylinder2.CanCollide = false -- Cylinder
 local GGblock1 = Instance.new("Part", handle) -- GG Field
 GGblock1.CanCollide = false 
 GGblock1.BrickColor = BrickColor.new("Pastel Blue")
 GGblock1.Material = Enum.Material.Neon
-GGblock1.Position = Vector3.new(0.025,0.355,-2.277)
+GGblock1.Position = Vector3.new(0.025,0.355,-2.077)
 GGblock1.Size = Vector3.new(0.05, 0.743, 0.05)
 local GGblock2 = Instance.new("Part", handle) 
 GGblock2.CanCollide = false 
 GGblock2.BrickColor = BrickColor.new("Pastel Blue")
 GGblock2.Material = Enum.Material.Neon
-GGblock2.Position = Vector3.new(-0.433, -0.377, -2.26)
+GGblock2.Position = Vector3.new(-0.433, -0.377, -2.06)
 GGblock2.Orientation = Vector3.new(39.204, -86.193, -4.388)
 GGblock2.Size = Vector3.new(0.05, 0.05, 1.222)
 local GGblock3 = Instance.new("Part", handle) 
 GGblock3.CanCollide = false 
 GGblock3.BrickColor = BrickColor.new("Pastel Blue")
 GGblock3.Material = Enum.Material.Neon
-GGblock3.Position = Vector3.new(0.486, -0.37, -2.258)
+GGblock3.Position = Vector3.new(0.486, -0.37, -2.058)
 GGblock3.Orientation = Vector3.new(37.547, 86.861, 176.758)
 GGblock3.Size = Vector3.new(0.05, 0.05, 1.222)
 local GGBall1 = Instance.new("Part", handle) 
@@ -788,21 +790,21 @@ GGBall1.CanCollide = false
 GGBall1.Material = Enum.Material.Neon
 GGBall1.BrickColor = BrickColor.new("Pastel Blue")
 GGBall1.Size = Vector3.new(0.224,0.224,0.224)
-GGBall1.Position = Vector3.new(0.051, 0.699, -2.306)
+GGBall1.Position = Vector3.new(0.051, 0.699, -2.106)
 local GGBall2 = Instance.new("Part", handle) 
 GGBall2.Shape = Enum.PartType.Ball
 GGBall2.CanCollide = false 
 GGBall2.Material = Enum.Material.Neon
 GGBall2.BrickColor = BrickColor.new("Pastel Blue")
 GGBall2.Size = Vector3.new(0.224,0.224,0.224)
-GGBall2.Position = Vector3.new(-0.93, -0.765, -2.23)
+GGBall2.Position = Vector3.new(-0.93, -0.765, -2.03)
 local GGBall3 = Instance.new("Part", handle) 
 GGBall3.Shape = Enum.PartType.Ball
 GGBall3.CanCollide = false 
 GGBall3.Material = Enum.Material.Neon
 GGBall3.BrickColor = BrickColor.new("Pastel Blue")
 GGBall3.Size = Vector3.new(0.224,0.224,0.224)
-GGBall3.Position = Vector3.new(0.931, -0.743, -2.23) -- GG Field
+GGBall3.Position = Vector3.new(0.931, -0.743, -2.03) -- GG Field
 local weld = Instance.new("WeldConstraint", tool) --Welds
 weld.Part0 = handle
 weld.Part1 = cylinder2 
@@ -826,7 +828,10 @@ weld6.Part0 = handle
 weld6.Part1 = GGBall2
 local weld7 = Instance.new("WeldConstraint", tool)
 weld7.Part0 = handle
-weld7.Part1 = GGBall3 --Welds 
+weld7.Part1 = GGBall3  
+local weld8 = Instance.new("WeldConstraint", tool)
+weld8.Part0 = handle
+weld8.Part1 = MeshPart --Welds 
 GGblock1.Transparency = 1
 GGblock2.Transparency = 1
 GGblock3.Transparency = 1
@@ -845,7 +850,8 @@ handle.Color = Color3.fromRGB(255,255,255)
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
-tool.Name = "Portal Gun"
+handle.Transparency = 1
+tool.Name = "Mel's Portal Gun"
 if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 	tool.GripPos = Vector3.new(0.35,0.25,0.25)
 else
@@ -910,7 +916,6 @@ mouse.Button1Down:Connect(function()
 		BShoot:Play()
 		createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,1)
 		cylinder1.BrickColor = BrickColor.new("Bright blue") 
-		cylinder1.Material = Enum.Material.Neon
 		cylinder2.BrickColor = BrickColor.new("Bright blue") 
 	end
 end)
@@ -919,7 +924,6 @@ mouse.Button2Down:Connect(function()
 		OShoot:Play()
 		createportal(cylinder1.CFrame*CFrame.new(0,0,-2.7).Position,mouse.Hit.Position,mouse.Target,2)
 		cylinder1.BrickColor = BrickColor.new("Neon orange")
-		cylinder1.Material = Enum.Material.Neon
 		cylinder2.BrickColor = BrickColor.new("Neon orange") 
 	end
 end)
@@ -963,9 +967,8 @@ mouse.KeyDown:Connect(function(key)
 			portal1 = nil
 			portal2 = nil
 			tpcd = false
-			cylinder1.Material = Enum.Material.SmoothPlastic
-			cylinder1.Color = Color3.fromRGB(50,50,50)
-			cylinder2.BrickColor = BrickColor.new("Really black") 
+			cylinder1.Color = Color3.fromRGB(19, 238, 165)
+			cylinder2.Color = Color3.fromRGB(19, 238, 165)
 			if portal1 == nil and portal2 == nil then 
 				game.Players.LocalPlayer:GetMouse().Icon = "rbxassetid://13683282532"
 			end
