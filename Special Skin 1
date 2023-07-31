@@ -287,7 +287,6 @@ player.CharacterAdded:Connect(function(char)
 	local handle = Instance.new("Part")
         tool.ToolTip = "is plastic a portal surface?!"
 	handle.CanCollide = false
-	tool.TextureId = "rbxassetid://13684639970"
 	tool.CanBeDropped = false
 	local mesh = Instance.new("SpecialMesh", handle)
 	mesh.MeshId = "rbxassetid://10017565642"
@@ -392,7 +391,7 @@ player.CharacterAdded:Connect(function(char)
 	handle.Size = Vector3.new(1.1,1.1,2.8)
 	handle.Material = Enum.Material.SmoothPlastic
 	handle.Parent = tool
-	tool.Name = "Portal Gun"
+	tool.Name = "Barbie's Portal Gun"
 	if char.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 		tool.GripPos = Vector3.new(0.35,0.25,0.25)
 	else
@@ -741,7 +740,6 @@ local tool = Instance.new("Tool")
 local handle = Instance.new("Part")
 tool.ToolTip = "is plastic a portal surface?!"
 handle.CanCollide = false
-tool.TextureId = "rbxassetid://13684639970"
 tool.CanBeDropped = false
 local mesh = Instance.new("SpecialMesh", handle)
 mesh.MeshId = "rbxassetid://10017565642"
@@ -845,7 +843,7 @@ handle.BrickColor = BrickColor.new("Pink")
 handle.Size = Vector3.new(1.1,1.1,2.8)
 handle.Material = Enum.Material.SmoothPlastic
 handle.Parent = tool
-tool.Name = "Portal Gun"
+tool.Name = "Barbie's Portal Gun"
 if character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
 	tool.GripPos = Vector3.new(0.35,0.25,0.25)
 else
