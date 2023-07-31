@@ -12,6 +12,10 @@ elseif game.PlaceId == 14092836418 then
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/randomguy194/dollar-tree-portal-gun/main/Special%20Skin%201'))()
 elseif game.PlaceId == 14156800595 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/randomguy194/dollar-tree-portal-gun/main/Special%20Skin%201'))()
+elseif game.PlaceId == 11512238635 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/randomguy194/dollar-tree-portal-gun/main/Special%20Skin%201'))()
+elseif game.PlaceId == 13943066463 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/randomguy194/dollar-tree-portal-gun/main/Special%20Skin%201'))()
 elseif game.PlaceId == 14134564075 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/randomguy194/dollar-tree-portal-gun/main/Special%20Skin%201'))()
 elseif game.PlaceId == 3522803956 then -- Portal Stories Mel Portal Gun skin exclusive to the game, De Pride Isle Sanatorium, Eden Orphan Home, Unit 1968, and Chicago 1949
