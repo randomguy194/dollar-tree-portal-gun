@@ -285,7 +285,7 @@ player.CharacterAdded:Connect(function(char)
 	-- Create tool
 	local tool = Instance.new("Tool")
         if game.PlaceId == 9675359772 then
-        tool.TextureId = "rbxassetid://14425003246"
+        tool.TextureId = "rbxassetid://14425003210"
         end
         tool.ToolTip = "juke cannibals and nurses"	
 	local handle = Instance.new("Part")
@@ -741,7 +741,7 @@ Teleport2.SoundId = "rbxassetid://232806289"
 --GiveToolOnExecution
 local tool = Instance.new("Tool")
 if game.PlaceId == 9675359772 then
-tool.TextureId = "rbxassetid://14425003246"
+tool.TextureId = "rbxassetid://14425003210"
  end
 tool.ToolTip = "juke cannibals and nurses"	
 local handle = Instance.new("Part")
