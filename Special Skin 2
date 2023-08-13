@@ -284,7 +284,10 @@ player.CharacterAdded:Connect(function(char)
 	local Humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
 	-- Create tool
 	local tool = Instance.new("Tool")
-	tool.ToolTip = "juke cannibals and nurses"	
+        if game.PlaceId == 9675359772 then
+        tool.TextureId = "rbxassetid://14425003246"
+        end
+        tool.ToolTip = "juke cannibals and nurses"	
 	local handle = Instance.new("Part")
 	handle.CanCollide = false
 	tool.CanBeDropped = false
@@ -737,6 +740,9 @@ Teleport2 = Instance.new("Sound", workspace)
 Teleport2.SoundId = "rbxassetid://232806289"
 --GiveToolOnExecution
 local tool = Instance.new("Tool")
+if game.PlaceId == 9675359772 then
+tool.TextureId = "rbxassetid://14425003246"
+ end
 tool.ToolTip = "juke cannibals and nurses"	
 local handle = Instance.new("Part")
 handle.CanCollide = false
