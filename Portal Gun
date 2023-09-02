@@ -79,7 +79,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portal1.Parent = workspace
 				portalin1 = Instance.new("Part", portal1)
 				portalin1.Size = Vector3.new(.5,.5,.5)
-				portalin1.CanCollide = false
+      			portalin1.CanCollide = false
 				portalin1.BrickColor = BrickColor.new("Bright blue")
 				portalin1.Material = Enum.Material.Neon
 				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
@@ -90,6 +90,9 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portalmesh1.Scale = Vector3.new(1.1,6,.05)
 				portalmesh1.Offset = Vector3.new(0,0,-0.02)
 				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				ESP1 = Instance.new("Highlight", portal1)
+				ESP1.FillTransparency = 1
+				ESP1.OutlineColor = Color3.fromRGB(65,222,253)
 				if portal2 then
 					portalin1.BrickColor = BrickColor.new("Really black")
 					portalin2.BrickColor = BrickColor.new("Really black")
@@ -195,6 +198,9 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portalmesh2.Scale = Vector3.new(1.1,6,.05)
 				portalmesh2.Offset = Vector3.new(0,0,-0.02)
 				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				ESP1 = Instance.new("Highlight", portal2)
+				ESP1.FillTransparency = 1
+				ESP1.OutlineColor = Color3.fromRGB(255,225,58)
 				if portal1 then
 					portalin2.BrickColor = BrickColor.new("Really black")
 					portalin1.BrickColor = BrickColor.new("Really black")
