@@ -77,9 +77,16 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portal1.BrickColor = BrickColor.new("Bright blue")
 				portal1.Material = Enum.Material.Neon
 				portal1.Parent = workspace
+				TP1 = Instance.new("Part", portal1)
+				TP1.Transparency = 1
+				TP1.CanCollide = false
+				TP1.Size = Vector3.new(.5,.5,.5)
+				TP1.Anchored = true 
+				TP1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				TP1.Orientation = Vector3.new(0,-90,0)
 				portalin1 = Instance.new("Part", portal1)
 				portalin1.Size = Vector3.new(.5,.5,.5)
-      			portalin1.CanCollide = false
+				portalin1.CanCollide = false
 				portalin1.BrickColor = BrickColor.new("Bright blue")
 				portalin1.Material = Enum.Material.Neon
 				portalin1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
@@ -112,9 +119,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					if hit.Parent == player.Character and portal2 and tpcd == false then
 						tpcd = true
 						Teleport2:Play()
-						player.Character.Humanoid.Sit = true
-						player.Character.HumanoidRootPart.CFrame = portal2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*2.5)
+						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*3)
 						workspace.CurrentCamera.CFrame =  portal2.CFrame
 						wait(0.2)
 						tpcd = false
@@ -129,6 +135,14 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				open1.PlayOnRemove = true 
 				soundopen1:Play()
 				portalin1:Destroy()
+				TP1:Destroy()
+				TP1 = Instance.new("Part", portal1)
+				TP1.Transparency = 1
+				TP1.CanCollide = false
+				TP1.Size = Vector3.new(.5,.5,.5)
+				TP1.Anchored = true 
+				TP1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				TP1.Orientation = Vector3.new(0,-90,0)
 				portalin1 = Instance.new("Part", portal1)
 				portalin1.Size = Vector3.new(.5,.5,.5)
 				portalin1.BrickColor = BrickColor.new("Bright blue")
@@ -185,6 +199,13 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portal2.BrickColor = BrickColor.new("Neon orange")
 				portal2.Material = Enum.Material.Neon
 				portal2.Parent = workspace
+				TP2 = Instance.new("Part", portal2)
+				TP2.Transparency = 1
+				TP2.CanCollide = false
+				TP2.Size = Vector3.new(.5,.5,.5)
+				TP2.Anchored = true 
+				TP2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				TP2.Orientation = Vector3.new(0,-90,0)
 				portalin2 = Instance.new("Part", portal2)
 				portalin2.Size = Vector3.new(.5,.5,.5)
 				portalin2.CanCollide = false
@@ -220,9 +241,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					if hit.Parent == player.Character and portal1 and tpcd == false then
 						tpcd = true
 						Teleport:Play()
-						player.Character.Humanoid.Sit = true
-						player.Character.HumanoidRootPart.CFrame = portal1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*2.5)
+						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*3)
 						workspace.CurrentCamera.CFrame =  portal1.CFrame
 						wait(0.2)
 						tpcd = false
@@ -237,6 +257,14 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				soundopen2:Play()
 				portal2.Size = Vector3.new(.7,.7,.7)
 				portal2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				TP2:Destroy()
+				TP2 = Instance.new("Part", portal2)
+				TP2.Transparency = 1
+				TP2.CanCollide = false
+				TP2.Size = Vector3.new(.5,.5,.5)
+				TP2.Anchored = true 
+				TP2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				TP2.Orientation= Vector3.new(0,-90,0)
 				portalin2:Destroy()
 				portalin2 = Instance.new("Part", portal2)
 				portalin2.Size = Vector3.new(.5,.5,.5)
