@@ -20,6 +20,7 @@ local Dragger = nil
 local isHolding = false
 local camera = game.Workspace.CurrentCamera
 -- Functions
+-- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
 	params.FilterDescendantsInstances = {player.Character,portal1,portal2}
@@ -122,7 +123,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						tpcd = true
 						Teleport2:Play()
 						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*3)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*5)
 						workspace.CurrentCamera.CFrame =  portal2.CFrame
 						wait(0.2)
 						tpcd = false
@@ -244,7 +245,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						tpcd = true
 						Teleport:Play()
 						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*3)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*5)
 						workspace.CurrentCamera.CFrame =  portal1.CFrame
 						wait(0.2)
 						tpcd = false
