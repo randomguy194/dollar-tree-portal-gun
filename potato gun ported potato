@@ -20,7 +20,6 @@ local Dragger = nil
 local isHolding = false
 local camera = game.Workspace.CurrentCamera
 -- Functions
--- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
 	params.FilterDescendantsInstances = {player.Character,portal1,portal2}
