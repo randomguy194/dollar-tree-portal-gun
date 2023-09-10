@@ -17,6 +17,9 @@ local GrabStart = false
 local Dragger = nil
 local isHolding = false
 local camera = game.Workspace.CurrentCamera
+--TeleportSound
+Teleport = Instance.new("Sound", workspace)
+Teleport.Name = "woosh"
 -- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
@@ -57,7 +60,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				sp1.Scale = Vector3.new(1,1.33,.05)
 				sp1.Offset = Vector3.new(0,0,-0.02)
 				idle1 = Instance.new("Sound", portal1)
-				idle1.SoundId = "rbxassetid://9063726568"
+				idle1.SoundId = "rbxassetid://148894502"
 				idle1.Looped = true
 				idle1.Volume = 0.2
 				open1 = Instance.new("Sound", portal1)
@@ -118,9 +121,15 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
 					if hit.Parent == player.Character and portal2 and tpcd == false then
 						tpcd = true
-						Teleport2:Play()
+						SoundRNG = math.random(1, 2)
+						if SoundRNG == 2 then
+							Teleport.SoundId = "rbxassetid://232806289"
+						else 
+							Teleport.SoundId = "rbxassetid://2769872789"
+						end
+						Teleport:Play()
 						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*5)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*3)
 						workspace.CurrentCamera.CFrame =  portal2.CFrame
 						wait(0.2)
 						tpcd = false
@@ -179,7 +188,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				sp2.Scale = Vector3.new(1,1.33,0.05)
 				sp2.Offset = Vector3.new(0,0,-0.02)
 				idle2 = Instance.new("Sound", portal2)
-				idle2.SoundId = "rbxassetid://9063726568"
+				idle2.SoundId = "rbxassetid://148894502"
 				idle2.Looped = true
 				idle2.Volume = 0.2
 				open2 = Instance.new("Sound", portal2)
@@ -240,9 +249,15 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
 					if hit.Parent == player.Character and portal1 and tpcd == false then
 						tpcd = true
+						SoundRNG = math.random(1, 2)
+						if SoundRNG == 2 then
+							Teleport.SoundId = "rbxassetid://232806289"
+						else 
+							Teleport.SoundId = "rbxassetid://2769872789"
+						end
 						Teleport:Play()
 						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*5)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*3)
 						workspace.CurrentCamera.CFrame =  portal1.CFrame
 						wait(0.2)
 						tpcd = false
@@ -760,15 +775,10 @@ player.CharacterAdded:Connect(function(char)
 		end)
 	end
 end)	
---Teleport1Sound
-Teleport = Instance.new("Sound", workspace)
-Teleport.SoundId = "rbxassetid://232806289"
---Teleport2Sound
-Teleport2 = Instance.new("Sound", workspace)
-Teleport2.SoundId = "rbxassetid://232806289"
 --ExecuteSound
 Execute = Instance.new("Sound", workspace)
 Execute.SoundId = "rbxassetid://2765274358"
+Execute.Name = "GLaDOS was here"
 Execute:Play()
 --GiveToolOnExecution
 local tool = Instance.new("Tool")
