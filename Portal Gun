@@ -129,7 +129,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						end
 						Teleport:Play()
 						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(-velocity*3)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*2)
 						workspace.CurrentCamera.CFrame =  portal2.CFrame
 						wait(0.2)
 						tpcd = false
@@ -257,7 +257,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						end
 						Teleport:Play()
 						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(-velocity*3)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*2)
 						workspace.CurrentCamera.CFrame =  portal1.CFrame
 						wait(0.2)
 						tpcd = false
