@@ -1,0 +1,156 @@
+local Twety_Speedometer_V1 = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Hide = Instance.new("TextButton")
+local Speed = Instance.new("TextLabel")
+local variables = Instance.new("Frame")
+local studs_v = Instance.new("TextButton")
+local feet_v = Instance.new("TextButton")
+local meters_v = Instance.new("TextButton")
+local miles_v = Instance.new("TextButton")
+local Show = Instance.new("TextButton")
+local var = Instance.new("StringValue")
+
+Twety_Speedometer_V1.Name = "Twety_Speedometer_V1"
+Twety_Speedometer_V1.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Twety_Speedometer_V1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = Twety_Speedometer_V1
+Main.Active = true
+Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Main.BackgroundTransparency = 0.200
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.373951733, 0, 0, 0)
+Main.Size = UDim2.new(0, 359, 0, 39)
+
+var.Name = "var"
+var.Parent = variables
+var.Value = "studs"
+
+Hide.Name = "Hide"
+Hide.Parent = Main
+Hide.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Hide.BorderSizePixel = 0
+Hide.Position = UDim2.new(1, 0, 0, 0)
+Hide.Size = UDim2.new(0, 132, 0, 23)
+Hide.Font = Enum.Font.GothamBold
+Hide.Text = "Hide"
+Hide.TextColor3 = Color3.fromRGB(255, 255, 255)
+Hide.TextSize = 14.000
+Hide.MouseButton1Click:Connect(function()
+	Main.Visible = false
+	Main.Active = false
+	Show.Visible = true
+	Show.Active = true
+end)
+
+Speed.Name = "Speed"
+Speed.Parent = Main
+Speed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Speed.BackgroundTransparency = 1.000
+Speed.Position = UDim2.new(0.0891364887, 0, 0, 0)
+Speed.Size = UDim2.new(0, 294, 0, 23)
+Speed.Font = Enum.Font.Gotham
+Speed.Text = "Speed: nil variable/s"
+Speed.TextColor3 = Color3.fromRGB(255, 255, 255)
+Speed.TextSize = 14.000
+
+variables.Name = "variables"
+variables.Parent = Main
+variables.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+variables.BorderSizePixel = 0
+variables.Position = UDim2.new(0, 0, 1, 0)
+variables.Size = UDim2.new(0, 359, 0, 24)
+
+studs_v.Name = "studs_v"
+studs_v.Parent = variables
+studs_v.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+studs_v.BorderSizePixel = 0
+studs_v.Position = UDim2.new(0.0167130921, 0, 0, 0)
+studs_v.Size = UDim2.new(0, 80, 0, 24)
+studs_v.Font = Enum.Font.GothamBold
+studs_v.Text = "Studs/s"
+studs_v.TextColor3 = Color3.fromRGB(40, 40, 40)
+studs_v.TextSize = 14.000
+studs_v.MouseButton1Click:Connect(function()
+	var.Value = tostring("studs")
+end)
+
+feet_v.Name = "feet_v"
+feet_v.Parent = variables
+feet_v.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+feet_v.BorderSizePixel = 0
+feet_v.Position = UDim2.new(0.259052932, 0, 0, 0)
+feet_v.Size = UDim2.new(0, 80, 0, 24)
+feet_v.Font = Enum.Font.GothamBold
+feet_v.Text = "Feet/s"
+feet_v.TextColor3 = Color3.fromRGB(40, 40, 40)
+feet_v.TextSize = 14.000
+feet_v.MouseButton1Click:Connect(function()
+	var.Value = tostring("feet")
+end)
+
+meters_v.Name = "meters_v"
+meters_v.Parent = variables
+meters_v.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+meters_v.BorderSizePixel = 0
+meters_v.Position = UDim2.new(0.518105865, 0, 0, 0)
+meters_v.Size = UDim2.new(0, 80, 0, 24)
+meters_v.Font = Enum.Font.GothamBold
+meters_v.Text = "Meters/s"
+meters_v.TextColor3 = Color3.fromRGB(40, 40, 40)
+meters_v.TextSize = 14.000
+meters_v.MouseButton1Click:Connect(function()
+	var.Value = tostring("meters")
+end)
+
+miles_v.Name = "miles_v"
+miles_v.Parent = variables
+miles_v.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+miles_v.BorderSizePixel = 0
+miles_v.Position = UDim2.new(0.760445714, 0, 0, 0)
+miles_v.Size = UDim2.new(0, 80, 0, 24)
+miles_v.Font = Enum.Font.GothamBold
+miles_v.Text = "Miles/h"
+miles_v.TextColor3 = Color3.fromRGB(40, 40, 40)
+miles_v.TextSize = 14.000
+miles_v.MouseButton1Click:Connect(function()
+	var.Value = tostring("miles")
+end)
+
+Show.Name = "Show"
+Show.Parent = Twety_Speedometer_V1
+Show.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Show.BorderSizePixel = 0
+Show.Position = UDim2.new(0.459762067, 0, 0, 0)
+Show.Size = UDim2.new(0, 112, 0, 23)
+Show.Visible = false
+Show.Font = Enum.Font.GothamBold
+Show.Text = "Show"
+Show.TextColor3 = Color3.fromRGB(255, 255, 255)
+Show.TextSize = 14.000
+Show.MouseButton1Click:Connect(function()
+	Main.Visible = true
+	Main.Active = true
+	Show.Visible = false
+	Show.Active = false
+end)
+
+function stf(velo)
+	return velo * 3.28084
+end
+
+repeat wait() until game.Players.LocalPlayer.Character
+while true do
+	velocity = math.floor(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Velocity.Magnitude)
+	if tostring(var.Value) == "studs" then
+		Speed.Text = tostring("Speed | "..tostring(velocity).." sp/s")
+	elseif tostring(var.Value) == "feet" then
+		Speed.Text = tostring("Speed | "..tostring(math.floor(stf(velocity)*0.28).." fp/s"))
+	elseif tostring(var.Value) == "meters" then
+		Speed.Text = tostring("Speed | "..tostring(math.floor(velocity*0.28)).." m/s")
+	elseif tostring(var.Value) == "miles" then
+		Speed.Text = tostring("Speed | "..tostring(math.floor(velocity*0.28*2.236936291)).." mp/h")
+	end
+	wait(0.001)
+end
