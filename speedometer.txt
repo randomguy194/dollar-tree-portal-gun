@@ -1,3 +1,4 @@
+--not by me
 local Twety_Speedometer_V1 = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local Hide = Instance.new("TextButton")
