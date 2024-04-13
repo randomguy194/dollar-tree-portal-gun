@@ -23,8 +23,8 @@ Teleport.Name = "woosh"
 -- Functions
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
-	params.FilterDescendantsInstances = {player.Character,portal1,portal2}
-	params.FilterType = Enum.RaycastFilterType.Blacklist
+	params.FilterDescendantsInstances = {player.Character,portal1,portal2,velocheck,velocheck2}	
+	params.FilterType = Enum.RaycastFilterType.Exclude
 	local ray = workspace:Raycast(rootpos,CFrame.new(rootpos,tpos).LookVector*9999999999,params)
 	if ray then
 		local rpos = ray.Position
@@ -87,6 +87,14 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				TP1.Anchored = true 
 				TP1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				TP1.Orientation = Vector3.new(0,-90,0)
+				velocheck = Instance.new("Part", portal1)
+				velocheck.Transparency = 1
+				velocheck.CanCollide = false
+				velocheck.CanQuery = false
+				velocheck.Anchored = true 
+				velocheck.Orientation = Vector3.new(0,0,0)
+				velocheck.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				velocheck.Size = Vector3.new(10,16,20)
 				portalin1 = Instance.new("Part", portal1)
 				portalin1.Size = Vector3.new(.5,.5,.5)
 				portalin1.CanCollide = false
@@ -117,9 +125,13 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 				idle1:Play()
+				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+				velocheck.Touched:Connect(function(hit)
+					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+					task.wait(0.2)
+				end)
 				portal1.Touched:Connect(function(hit)
-					local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
-					if hit.Parent == player.Character and portal2 and tpcd == false then
+					if hit.Parent == player.Character and portal2 and tpcd == false then	
 						tpcd = true
 						SoundRNG = math.random(1, 2)
 						if SoundRNG == 2 then
@@ -129,7 +141,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						end
 						Teleport:Play()
 						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*2)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*1.25)
 						workspace.CurrentCamera.CFrame =  portal2.CFrame
 						wait(0.2)
 						tpcd = false
@@ -152,6 +164,15 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				TP1.Anchored = true 
 				TP1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				TP1.Orientation = Vector3.new(0,-90,0)
+				velocheck:Destroy()
+				velocheck = Instance.new("Part", portal1)
+				velocheck.Transparency = 1
+				velocheck.CanCollide = false
+				velocheck.CanQuery = false
+				velocheck.Anchored = true 
+				velocheck.Orientation = Vector3.new(0,0,0)
+				velocheck.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				velocheck.Size = Vector3.new(10,16,20)
 				portalin1 = Instance.new("Part", portal1)
 				portalin1.Size = Vector3.new(.5,.5,.5)
 				portalin1.BrickColor = BrickColor.new("Bright blue")
@@ -174,6 +195,28 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					portalin1.BrickColor = BrickColor.new("Bright blue")
 					portalin1.Material = Enum.Material.Neon
 				end
+				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+				velocheck.Touched:Connect(function(hit)
+					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+					task.wait(0.2)
+				end)
+				portal1.Touched:Connect(function(hit)
+					if hit.Parent == player.Character and portal2 and tpcd == false then	
+						tpcd = true
+						SoundRNG = math.random(1, 2)
+						if SoundRNG == 2 then
+							Teleport.SoundId = "rbxassetid://232806289"
+						else 
+							Teleport.SoundId = "rbxassetid://2769872789"
+						end
+						Teleport:Play()
+						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*1.25)
+						workspace.CurrentCamera.CFrame =  portal2.CFrame
+						wait(0.2)
+						tpcd = false
+					end
+				end)
 				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
@@ -215,6 +258,14 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				TP2.Anchored = true 
 				TP2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				TP2.Orientation = Vector3.new(0,-90,0)
+				velocheck2 = Instance.new("Part", portal2)
+				velocheck2.Transparency = 1
+				velocheck2.CanCollide = false
+				velocheck2.CanQuery = false
+				velocheck2.Anchored = true 
+				velocheck2.Orientation = Vector3.new(0,0,0)
+				velocheck2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				velocheck2.Size = Vector3.new(10,16,20)
 				portalin2 = Instance.new("Part", portal2)
 				portalin2.Size = Vector3.new(.5,.5,.5)
 				portalin2.CanCollide = false
@@ -245,8 +296,12 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				local tween = ts:Create(portal2,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 				idle2:Play()
+				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+				velocheck2.Touched:Connect(function(hit)
+					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude	
+					task.wait(0.2)
+				end)
 				portal2.Touched:Connect(function(hit)
-					local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
 					if hit.Parent == player.Character and portal1 and tpcd == false then
 						tpcd = true
 						SoundRNG = math.random(1, 2)
@@ -257,7 +312,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 						end
 						Teleport:Play()
 						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*2)
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*1.25)
 						workspace.CurrentCamera.CFrame =  portal1.CFrame
 						wait(0.2)
 						tpcd = false
@@ -280,6 +335,15 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				TP2.Anchored = true 
 				TP2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				TP2.Orientation= Vector3.new(0,-90,0)
+				velocheck2:Destroy()
+				velocheck2 = Instance.new("Part", portal2)
+				velocheck2.Transparency = 1
+				velocheck2.CanCollide = false
+				velocheck2.CanQuery = false
+				velocheck2.Anchored = true 
+				velocheck2.Orientation = Vector3.new(0,0,0)
+				velocheck2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				velocheck2.Size = Vector3.new(10,16,20)
 				portalin2:Destroy()
 				portalin2 = Instance.new("Part", portal2)
 				portalin2.Size = Vector3.new(.5,.5,.5)
@@ -294,6 +358,28 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portalmesh2.Scale = Vector3.new(1.1,6,.05)
 				portalmesh2.Offset = Vector3.new(0,0,-0.02)
 				portalin2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+				velocheck2.Touched:Connect(function(hit)
+					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+					task.wait(0.2)
+				end)
+				portal2.Touched:Connect(function(hit)
+					if hit.Parent == player.Character and portal1 and tpcd == false then
+						tpcd = true
+						SoundRNG = math.random(1, 2)
+						if SoundRNG == 2 then
+							Teleport.SoundId = "rbxassetid://232806289"
+						else 
+							Teleport.SoundId = "rbxassetid://2769872789"
+						end
+						Teleport:Play()
+						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
+						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*1.25)
+						workspace.CurrentCamera.CFrame =  portal1.CFrame
+						wait(0.2)
+						tpcd = false
+					end
+				end)
 				if portal1 then
 					portalin2.BrickColor = BrickColor.new("Really black")
 					portalin1.BrickColor = BrickColor.new("Really black")
