@@ -5,7 +5,7 @@ local de = game:GetService("Debris")
 -- Objs
 local player = game.Players.LocalPlayer
 warn("Mel's Portal Gun from Portal Stories: Mel (Exclusive skin for the game, De Pride Isle Sanatorium)")
-warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight | E: Pick Up Unanchored Parts")
+warn("Controls: LMB: Blue Portal | RMB: Orange Portal | R: Fizzle Portals | F: Flashlight | E: Pick Up Unanchored Parts | C: Zoom in")
 local mouse = player:GetMouse()
 local portal1 = nil
 local portal2 = nil
@@ -80,6 +80,16 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				portal1.BrickColor = BrickColor.new("Bright blue")
 				portal1.Material = Enum.Material.Neon
 				portal1.Parent = workspace
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tpR15 = Instance.new("Part", portal1)
+					tpR15.Size = Vector3.new(.7,.7,.7)
+					tpR15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+					tpR15.Anchored = true
+					tpR15.CanCollide = false	
+					tpR15.Transparency = 1
+					local tween = ts:Create(tpR15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
+					tween:Play()
+				end
 				TP1 = Instance.new("Part", portal1)
 				TP1.Transparency = 1
 				TP1.CanCollide = false
@@ -128,25 +138,55 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
 				velocheck.Touched:Connect(function(hit)
 					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
-					task.wait(0.2)
+					task.wait(0.1)
 				end)
-				portal1.Touched:Connect(function(hit)
-					if hit.Parent == player.Character and portal2 and tpcd == false then	
-						tpcd = true
-						SoundRNG = math.random(1, 2)
-						if SoundRNG == 2 then
-							Teleport.SoundId = "rbxassetid://232806289"
-						else 
-							Teleport.SoundId = "rbxassetid://2769872789"
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tpR15.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP2.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal2.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
 						end
-						Teleport:Play()
-						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*1.25)
-						workspace.CurrentCamera.CFrame =  portal2.CFrame
-						wait(0.2)
-						tpcd = false
-					end
-				end)
+					end)
+				else
+					portal1.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP2.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal2.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
+						end
+					end)
+				end
 			else
 				open1:Destroy()
 				open1 = Instance.new("Sound", portal1)
@@ -164,6 +204,17 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				TP1.Anchored = true 
 				TP1.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				TP1.Orientation = Vector3.new(0,-90,0)
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tpR15:Destroy()
+					tpR15 = Instance.new("Part", portal1)
+					tpR15.Size = Vector3.new(.7,.7,.7)
+					tpR15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+					tpR15.Anchored = true
+					tpR15.CanCollide = false	
+					tpR15.Transparency = 1
+					local tween = ts:Create(tpR15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
+					tween:Play()
+				end
 				velocheck:Destroy()
 				velocheck = Instance.new("Part", portal1)
 				velocheck.Transparency = 1
@@ -198,25 +249,55 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
 				velocheck.Touched:Connect(function(hit)
 					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
-					task.wait(0.2)
+					task.wait(0.1)
 				end)
-				portal1.Touched:Connect(function(hit)
-					if hit.Parent == player.Character and portal2 and tpcd == false then	
-						tpcd = true
-						SoundRNG = math.random(1, 2)
-						if SoundRNG == 2 then
-							Teleport.SoundId = "rbxassetid://232806289"
-						else 
-							Teleport.SoundId = "rbxassetid://2769872789"
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tpR15.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP2.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal2.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
 						end
-						Teleport:Play()
-						player.Character.HumanoidRootPart.CFrame = TP2.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*1.25)
-						workspace.CurrentCamera.CFrame =  portal2.CFrame
-						wait(0.2)
-						tpcd = false
-					end
-				end)
+					end)
+				else
+					portal1.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP2.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal2.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal2.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
+						end
+					end)
+				end
 				local tween = ts:Create(portal1,info2,{Size=Vector3.new(5,6,1),Transparency=0})
 				tween:Play()
 				local tween = ts:Create(portalin1,info2,{Size=Vector3.new(4.1,1.23,2.5),Transparency=0})
@@ -258,6 +339,16 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				TP2.Anchored = true 
 				TP2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				TP2.Orientation = Vector3.new(0,-90,0)
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tp2R15 = Instance.new("Part", portal2)
+					tp2R15.Size = Vector3.new(.7,.7,.7)
+					tp2R15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+					tp2R15.Anchored = true
+					tp2R15.CanCollide = false	
+					tp2R15.Transparency = 1
+					local tween = ts:Create(tp2R15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
+					tween:Play()
+				end
 				velocheck2 = Instance.new("Part", portal2)
 				velocheck2.Transparency = 1
 				velocheck2.CanCollide = false
@@ -299,25 +390,55 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
 				velocheck2.Touched:Connect(function(hit)
 					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude	
-					task.wait(0.2)
+					task.wait(0.1)
 				end)
-				portal2.Touched:Connect(function(hit)
-					if hit.Parent == player.Character and portal1 and tpcd == false then
-						tpcd = true
-						SoundRNG = math.random(1, 2)
-						if SoundRNG == 2 then
-							Teleport.SoundId = "rbxassetid://232806289"
-						else 
-							Teleport.SoundId = "rbxassetid://2769872789"
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tp2R15.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP1.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal1.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
 						end
-						Teleport:Play()
-						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*1.25)
-						workspace.CurrentCamera.CFrame =  portal1.CFrame
-						wait(0.2)
-						tpcd = false
-					end
-				end)
+					end)
+				else
+					portal2.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP1.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal1.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
+						end
+					end)
+				end
 			else
 				open2:Destroy()
 				open2 = Instance.new("Sound", portal2)
@@ -335,6 +456,17 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				TP2.Anchored = true 
 				TP2.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 				TP2.Orientation= Vector3.new(0,-90,0)
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tp2R15:Destroy()
+					tp2R15 = Instance.new("Part", portal2)
+					tp2R15.Size = Vector3.new(.7,.7,.7)
+					tp2R15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
+					tp2R15.Anchored = true
+					tp2R15.CanCollide = false	
+					tp2R15.Transparency = 1
+					local tween = ts:Create(tp2R15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
+					tween:Play()
+				end
 				velocheck2:Destroy()
 				velocheck2 = Instance.new("Part", portal2)
 				velocheck2.Transparency = 1
@@ -361,25 +493,55 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 				local velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
 				velocheck2.Touched:Connect(function(hit)
 					velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
-					task.wait(0.2)
+					task.wait(0.1)
 				end)
-				portal2.Touched:Connect(function(hit)
-					if hit.Parent == player.Character and portal1 and tpcd == false then
-						tpcd = true
-						SoundRNG = math.random(1, 2)
-						if SoundRNG == 2 then
-							Teleport.SoundId = "rbxassetid://232806289"
-						else 
-							Teleport.SoundId = "rbxassetid://2769872789"
+				if character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+					tp2R15.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP1.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal1.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
 						end
-						Teleport:Play()
-						player.Character.HumanoidRootPart.CFrame = TP1.CFrame
-						player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*1.25)
-						workspace.CurrentCamera.CFrame =  portal1.CFrame
-						wait(0.2)
-						tpcd = false
-					end
-				end)
+					end)
+				else
+					portal2.Touched:Connect(function(hit)
+						if hit.Parent == player.Character and portal2 and tpcd == false then	
+							tpcd = true
+							SoundRNG = math.random(1, 2)
+							if SoundRNG == 2 then
+								Teleport.SoundId = "rbxassetid://232806289"
+							else 
+								Teleport.SoundId = "rbxassetid://2769872789"
+							end
+							Teleport:Play()
+							player.Character.HumanoidRootPart.CFrame = TP1.CFrame
+							player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*2.75)
+							workspace.CurrentCamera.CFrame =  portal1.CFrame
+							if portalin1.Orientation == Vector3.new(90,90,0) and portalin2.Orientation == Vector3.new(90,90,0) then
+								wait(0.2)
+								velocity = player.Character.HumanoidRootPart.AssemblyLinearVelocity.Magnitude
+								player.Character.HumanoidRootPart.AssemblyLinearVelocity = portal1.CFrame.LookVector*(velocity*.1)
+							end
+							wait(0.2)
+							tpcd = false
+						end
+					end)
+				end
 				if portal1 then
 					portalin2.BrickColor = BrickColor.new("Really black")
 					portalin1.BrickColor = BrickColor.new("Really black")
@@ -1309,4 +1471,15 @@ else
 			end
 		end
 	end)
+end
+--spyglass
+while task.wait() do
+	local UserInputService = game:GetService("UserInputService")
+	local Keybind = UserInputService:IsKeyDown(Enum.KeyCode.C)
+	local camera = game.Workspace.CurrentCamera
+	local targetFOV = Keybind and 20 or 70
+
+	if camera.FieldOfView ~= targetFOV then
+		camera.FieldOfView = math.clamp(camera.FieldOfView + (targetFOV - camera.FieldOfView) * 0.2, 0, 240)
+	end
 end
