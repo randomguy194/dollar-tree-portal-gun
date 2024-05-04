@@ -39,7 +39,6 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 	params.FilterType = Enum.RaycastFilterType.Exclude
 	local ray = workspace:Raycast(rootpos,CFrame.new(rootpos,tpos).LookVector*9999999999,params)
 	if ray then
-		canquerymysavior()
 		local rpos = ray.Position
 		local rnorm = ray.Normal
 		local dist = (rootpos-rpos).Magnitude
@@ -1522,5 +1521,4 @@ while task.wait() do
 	if camera.FieldOfView ~= targetFOV then
 		camera.FieldOfView = math.clamp(camera.FieldOfView + (targetFOV - camera.FieldOfView) * 0.4, 0, 480)
 	end
-	canquerymysavior()
 end
