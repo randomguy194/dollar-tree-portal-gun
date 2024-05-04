@@ -97,7 +97,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					tpR15.Size = Vector3.new(.7,.7,.7)
 					tpR15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 					tpR15.Anchored = true
-					tpR15.CanCollide = false	
+					tpR15.CanCollide = false
+					tpR15.CanQuery = false
 					tpR15.Transparency = 1
 					local tween = ts:Create(tpR15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
 					tween:Play()
@@ -222,7 +223,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					tpR15.Size = Vector3.new(.7,.7,.7)
 					tpR15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 					tpR15.Anchored = true
-					tpR15.CanCollide = false	
+					tpR15.CanCollide = false
+					tpR15.CanQuery = false
 					tpR15.Transparency = 1
 					local tween = ts:Create(tpR15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
 					tween:Play()
@@ -357,6 +359,7 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					tp2R15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 					tp2R15.Anchored = true
 					tp2R15.CanCollide = false	
+					tp2R15.CanQuery = false
 					tp2R15.Transparency = 1
 					local tween = ts:Create(tp2R15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
 					tween:Play()
@@ -474,7 +477,8 @@ local function createportal(rootpos,tpos,hitpart,ptype)
 					tp2R15.Size = Vector3.new(.7,.7,.7)
 					tp2R15.CFrame = CFrame.lookAt(rpos,rpos+rnorm)
 					tp2R15.Anchored = true
-					tp2R15.CanCollide = false	
+					tp2R15.CanCollide = false
+					tp2R15.CanQuery = false
 					tp2R15.Transparency = 1
 					local tween = ts:Create(tp2R15,info2,{Size=Vector3.new(5,7,2.5),Transparency=1})
 					tween:Play()
