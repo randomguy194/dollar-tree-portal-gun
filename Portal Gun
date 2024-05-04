@@ -20,13 +20,24 @@ local camera = game.Workspace.CurrentCamera
 --TeleportSound
 Teleport = Instance.new("Sound", workspace)
 Teleport.Name = "woosh"
--- Functions
+--Functions
+local function canquerymysavior()
+	for i, child in pairs(workspace:GetDescendants()) do
+		if child:IsA("Part") or child:IsA("BasePart") or child:IsA("MeshPart") or child:IsA("WedgePart") or child:IsA("TrussPart") then
+			if child.CanCollide == false then 
+				child.CanQuery = false
+			end
+		end
+	end
+end
+canquerymysavior()
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
-	params.FilterDescendantsInstances = {player.Character,portal1,portal2,velocheck,velocheck2}	
+	params.FilterDescendantsInstances = {player.Character,portal1,portal2,velocheck,velocheck2,i}	
 	params.FilterType = Enum.RaycastFilterType.Exclude
 	local ray = workspace:Raycast(rootpos,CFrame.new(rootpos,tpos).LookVector*9999999999,params)
 	if ray then
+		canquerymysavior()
 		local rpos = ray.Position
 		local rnorm = ray.Normal
 		local dist = (rootpos-rpos).Magnitude
@@ -1476,6 +1487,7 @@ while task.wait() do
 	local targetFOV = Keybind and 20 or 70
 
 	if camera.FieldOfView ~= targetFOV then
-		camera.FieldOfView = math.clamp(camera.FieldOfView + (targetFOV - camera.FieldOfView) * 0.2, 0, 240)
+		camera.FieldOfView = math.clamp(camera.FieldOfView + (targetFOV - camera.FieldOfView) * 0.4, 0, 480)
 	end
+	canquerymysavior()
 end
