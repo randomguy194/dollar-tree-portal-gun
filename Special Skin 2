@@ -33,7 +33,7 @@ end
 canquerymysavior()
 local function createportal(rootpos,tpos,hitpart,ptype)
 	local params = RaycastParams.new()
-	params.FilterDescendantsInstances = {player.Character,portal1,portal2,velocheck,velocheck2}	
+	params.FilterDescendantsInstances = {player.Character,portal1,portal2}	
 	params.FilterType = Enum.RaycastFilterType.Exclude
 	local ray = workspace:Raycast(rootpos,CFrame.new(rootpos,tpos).LookVector*9999999999,params)
 	if ray then
